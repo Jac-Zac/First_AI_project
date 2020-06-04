@@ -1,6 +1,8 @@
-# First_AI_project
+# My First AI project
 
-### My tic tac toe AI project 
+## My tic tac toe AI project 
 
-<b>this project is joust at his birth<b>
+###### The aim of this project is to have two agents play against each other
+
+<b>this project has just started reacently<b>
 
