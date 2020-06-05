@@ -10,15 +10,20 @@ This code will allow you to use a prettrained model or traing a agent by yuorsel
 ## Motivation
 I'm mostly doing this project as a lerning experinece but I also want to shear it with the word
 
-# Installation
+## Installation
 
 **copy the project**
 ```
 git clone https://github.com/Jac-Zac/First_AI_project.git
 ```
-**build the porject**
+**compile the porject**
+###### you have to be in the right directory 
 ```
 make
+```
+**run the code**
+```
+./output
 ```
 **clean all component**
 ```
