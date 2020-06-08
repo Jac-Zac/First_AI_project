@@ -13,7 +13,6 @@
 
 int main(int argc, const char * argv[]) {
     AI obj;
-    obj.episode();
     obj.train_AI();    
 }
 

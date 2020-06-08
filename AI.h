@@ -19,6 +19,7 @@ public:
     void check_won();
     void train_AI();
 protected:
+    size_t batch_size = 1; // for now bactch size is only 1
     unsigned short turn = 0;
     unsigned short player;
     unsigned short action_1 = 0;
@@ -27,7 +28,8 @@ protected:
     void exploit();
 };
     
-inline AI::AI(){
+inline AI::AI()
+{
     std::cout<<"\n";
     std::cout<<"Ai trianing ... \n";
 }
@@ -109,25 +111,19 @@ inline void AI::check_won(){
 }
 
 
-/*
-inline void AI::training(){
-     // devo aggiungere altre cose quando avro la rete neurlae per adesso lo faccio solo per fare in multithreadred 
-     // per farlo inoltre probabilimetne devo rendere molte cose static 
-     epoch();
-}
-
-// I need a neural net a tree seach and other things
-*/
-
 inline void AI::train_AI(){
 // this is just a test for now 
+// I think the topology should be N, 12 , 15 , 9 but for testing it will be simpler
     std::vector<int> topology;
     topology.push_back(N);
     topology.push_back(12);
-    topology.push_back(15);
-    topology.push_back(12);
     topology.push_back(N);
     Net net(topology);
-    net.Feedforward(state);
     net.print_Net();
+    episode();
+    
+    for(size_t i = 0 ; i < batch_size ; i++ ){
+        net.Feedforward(state);
+    }
+   
 }

@@ -56,21 +56,20 @@ inline void Net::Feedforward(std::array<int,N>& state){
     // i also have to add the bias to all the neuron and pass everything through relu
     
     //implementation of Feedforward
-    //prossima cosa bisogna svilupparlo fai un disegno per avere una idea miglore
-/*
-    for(size_t i = 0 ; i < DNN.size() ; i++){
-       for(size_t j = 0 ; j < m_topology ; j++){
-           DNN[i + 1].layer[j] 
-           // for the last layer not + 1 I have to check 
+    
+    // fill the neurons of the first layer   
+    for(size_t i = 0; i < N ; i++){
+          DNN[0].layer[i] = state[i] + 1 ; // fill all the imput neuron with the state that was passed in
+          // + 1 is to simulate a bias neuron that has the value of 1  
+      }
+ /*  to fix   
+    for(size_t j = 0 ; j < DNN.size(); j++){
+        // loop trought layers
+        for(size_t k = 0 ; k < topology[j + 1].size() ; k++){  // loop trought the neurons in the new layer 
+
         }
     }
 */
-      // for now as a test we fill the first neurons 
-      for(size_t i = 0; i < N ; i++){
-          DNN[0].layer[i] = state[i] + 1 ; // fill all the imput neuron with the state
-          // + 1 is to simulate a bias neuron that has the value of 1  
-      }
-
       // this is just a test we can immagin 1 as the input neuron and than a weight
       std::cout<<"\n"<<"The output of the first test moltiplication is: \n"<<activation_function(DNN[0].layer[0]*DNN[0].output_weights[0].single_output_weigths[0],Tanh)<<"\n";  
 }
