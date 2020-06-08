@@ -57,21 +57,23 @@ inline void Net::Feedforward(std::array<int,N>& state){
     
     //implementation of Feedforward
     
-    // fill the neurons of the first layer   
+    // fill the neurons of the first layer, I think I have to pass all of this trought a actiavtion function to
     for(size_t i = 0; i < N ; i++){
           DNN[0].layer[i] = state[i] + 1 ; // fill all the imput neuron with the state that was passed in
           // + 1 is to simulate a bias neuron that has the value of 1  
       }
- /*  to fix   
-    for(size_t j = 0 ; j < DNN.size(); j++){
+    
+    for(size_t j = 0 ; j < DNN.size() - 1; j++){
         // loop trought layers
-        for(size_t k = 0 ; k < topology[j + 1].size() ; k++){  // loop trought the neurons in the new layer 
-
+        for(size_t k = 0 ; k < m_topology[j + 1] ; k++){  // loop trought the neurons in the new layer 
+            // as a test
+            for(size_t i = 0; i < m_topology[j]; i++){
+                DNN[j + 1].layer[k] += DNN[j].layer[i]*DNN[j].output_weights[i].single_output_weights[k];
+                DNN[j + 1].layer[k] += 1;
+            }
+           // DNN[j + 1].layer[k] = activation_function(DNN[j + 1].layer[k],Tanh);
         }
     }
-*/
-      // this is just a test we can immagin 1 as the input neuron and than a weight
-      std::cout<<"\n"<<"The output of the first test moltiplication is: \n"<<activation_function(DNN[0].layer[0]*DNN[0].output_weights[0].single_output_weigths[0],Tanh)<<"\n";  
 }
 
 

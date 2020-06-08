@@ -11,7 +11,7 @@
 
 class Weights{
 public:
-    std::vector<double> single_output_weigths;
+    std::vector<double> single_output_weights;
     
     double gen_random();
     void gen_output(int n);
@@ -20,7 +20,7 @@ public:
 
 inline void Weights::gen_output(int n){
      for(int i = 0 ; i < n ; i++){
-        single_output_weigths.emplace_back(gen_random());
+        single_output_weights.emplace_back(gen_random());
      }
 }
 
@@ -41,7 +41,7 @@ inline double Weights::gen_random(){
 }
 
 inline void Weights::print_output_single_weights()const{
-    for(auto& it : single_output_weigths){
+    for(auto& it : single_output_weights){
     std::cout<<it<<" ";
   }
   std::cout<<"\n";

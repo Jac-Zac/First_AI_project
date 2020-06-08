@@ -119,11 +119,12 @@ inline void AI::train_AI(){
     topology.push_back(12);
     topology.push_back(N);
     Net net(topology);
-    net.print_Net();
     episode();
     
     for(size_t i = 0 ; i < batch_size ; i++ ){
         net.Feedforward(state);
     }
+    
+    net.print_Net();
    
 }
