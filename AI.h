@@ -14,8 +14,8 @@ class AI : public game {
 public:
     // ai class
     AI();
-    void step();
-    void episode();
+    void step(Net& net);
+    void episode(Net& net);
     void check_won();
     void train_AI();
 protected:
@@ -25,7 +25,8 @@ protected:
     unsigned short action_1 = 0;
     unsigned short action_2 = 1;
     bool won = false; // if won == true game is ended else we should end
-    void exploit();
+    void exploit(Net& net);
+    void explore();
 };
     
 inline AI::AI()
@@ -36,8 +37,14 @@ inline AI::AI()
 
 // un idea può essere di avere una batch size di tipo 5 che viene processata in parallelo da mutlithreading però ricordati di cambiare alive in non static e anche state 
 
+// chose the best action following the feed forward
+inline void AI::exploit(Net& net){
+    // to implement 
+    net.Feedforward(state);
+}
 
-inline void AI::exploit(){
+// explore in a random manner 
+inline void AI::explore(){
     if(turn % 2 == 0){
         do{
             action_1 = rand() % 9;
@@ -51,12 +58,12 @@ inline void AI::exploit(){
 
 // inoltre doveri sviluppare dele reword 
 // da correggere 
-inline void AI::episode(){ // this should be an episode not an epoche
+inline void AI::episode(Net& net){ // this should be an episode not an epoche
     std::srand((unsigned)time(0));
     while(won == false){
         player = (turn % 2 == 0) ? 1 : 2;
         std::cout<<"--------------------"<<"\n"<<"Player number "<< player<<" Has the move"<<"\n";
-        step();
+        step(net);
         // check if somebody won in this turn
         check_won();
 
@@ -74,7 +81,7 @@ inline void AI::episode(){ // this should be an episode not an epoche
 }
 
 // this should not be an episode but is just 1 step 
-inline void AI::step(){
+inline void AI::step(Net& net){
     //funzione per giocare
     
     // i have to check if move is allowd if the slot is != 0 move should be the next best Q_value
@@ -82,11 +89,12 @@ inline void AI::step(){
         // ai play
         // action = max Q_value (da creare un array Q value per una rete neuraler)
         // I have to check when to exploit
-        exploit();
+        explore();
+        // exploit se il numero random è maggiore della soglia 
         state[action_1] = 1;
     }else{
         // i play for now than 2 ai will play
-        exploit();
+        explore();
         state[action_2] = -1;
     }
     print_board();
@@ -119,7 +127,7 @@ inline void AI::train_AI(){
     topology.push_back(12);
     topology.push_back(N);
     Net net(topology);
-    episode();
+    episode(net);
     
     for(size_t i = 0 ; i < batch_size ; i++ ){
         net.Feedforward(state);

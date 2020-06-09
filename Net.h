@@ -13,7 +13,8 @@
 class Net : public Layer
 {
 public:
-    Net(std::vector<int> topology); // constructor
+    Net(std::vector<int> topology); // constructor weights need to be initizlized
+    Net(std::vector<int> topology, std::ifstream& infile); // constructor weights are alread craeted and saved in another file 
     
     std::vector<Layer> DNN;
     void Feedforward(std::array<int,N>& state);
@@ -38,6 +39,11 @@ inline Net::Net(std::vector<int> topology)
      }
 }
 
+inline Net::Net(std::vector<int> topology, std::ifstream& infile){
+// must be filled 
+}
+
+
 // appunti
 // scrivu una funzione che faccia RELUE magari cerca su interntet 
 
@@ -59,19 +65,18 @@ inline void Net::Feedforward(std::array<int,N>& state){
     
     // fill the neurons of the first layer, I think I have to pass all of this trought a actiavtion function to
     for(size_t i = 0; i < N ; i++){
-          DNN[0].layer[i] = state[i] + 1 ; // fill all the imput neuron with the state that was passed in
-          // + 1 is to simulate a bias neuron that has the value of 1  
+          DNN[0].layer[i] = state[i]; // fill all the imput neuron with the state that was passed in
       }
     
     for(size_t j = 0 ; j < DNN.size() - 1; j++){
         // loop trought layers
         for(size_t k = 0 ; k < m_topology[j + 1] ; k++){  // loop trought the neurons in the new layer 
-            // as a test
+            // as a testK
             for(size_t i = 0; i < m_topology[j]; i++){
                 DNN[j + 1].layer[k] += DNN[j].layer[i]*DNN[j].output_weights[i].single_output_weights[k];
-                DNN[j + 1].layer[k] += 1;
             }
-           // DNN[j + 1].layer[k] = activation_function(DNN[j + 1].layer[k],Tanh);
+            // this is just as a test 
+            DNN[j + 1].layer[k] = activation_function(DNN[j + 1].layer[k],Tanh); // activation function 
         }
     }
 }
