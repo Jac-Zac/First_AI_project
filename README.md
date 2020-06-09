@@ -16,8 +16,7 @@ I'm mostly doing this project as a lerning experinece but I also want to shear i
 ```
 git clone https://github.com/Jac-Zac/First_AI_project.git
 ```
-**compile the porject**
-###### you have to be in the right directory 
+**compile the porject (you have to be in the right directory)**
 ```
 make
 ```
@@ -30,7 +29,4 @@ make
 make clean
 ```
 <b>this project has just started reacently<b>
-
-###### installation will follow
-
 
