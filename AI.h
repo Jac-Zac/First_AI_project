@@ -125,6 +125,8 @@ inline void AI::train_AI(){
     std::vector<int> topology;
     topology.push_back(N);
     topology.push_back(12);
+    topology.push_back(15);
+    topology.push_back(12);
     topology.push_back(N);
     Net net(topology);
     episode(net);

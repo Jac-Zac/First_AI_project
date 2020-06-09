@@ -49,9 +49,8 @@ inline Net::Net(std::vector<int> topology, std::ifstream& infile){
 
 inline double Net::activation_function(double neuron, int type){
    if(type == Tanh) return tanh(neuron);
-   if(type == ReLU){
-      // i have to code ReLU
-   }
+   if(type == ReLU) return (neuron <= 0) ? 0 : neuron; // ternary operator implmentation 
+  
     // defoult case
     return 0;
 }
@@ -65,8 +64,8 @@ inline void Net::Feedforward(std::array<int,N>& state){
     
     // fill the neurons of the first layer, I think I have to pass all of this trought a actiavtion function to
     for(size_t i = 0; i < N ; i++){
-          DNN[0].layer[i] = state[i]; // fill all the imput neuron with the state that was passed in
-      }
+       DNN[0].layer[i] = state[i]; // fill all the imput neuron with the state that was passed in
+    }
     
     for(size_t j = 0 ; j < DNN.size() - 1; j++){
         // loop trought layers
@@ -76,7 +75,7 @@ inline void Net::Feedforward(std::array<int,N>& state){
                 DNN[j + 1].layer[k] += DNN[j].layer[i]*DNN[j].output_weights[i].single_output_weights[k];
             }
             // this is just as a test 
-            DNN[j + 1].layer[k] = activation_function(DNN[j + 1].layer[k],Tanh); // activation function 
+            DNN[j + 1].layer[k] = activation_function(DNN[j + 1].layer[k],ReLU); // activation function 
         }
     }
 }
