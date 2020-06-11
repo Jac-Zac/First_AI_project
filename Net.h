@@ -15,17 +15,19 @@ class Net : public Layer
 public:
     Net(std::vector<int> topology); // constructor weights need to be initizlized
     Net(std::vector<int> topology, std::ifstream& infile); // constructor weights are alread craeted and saved in another file 
-    
+
+  // devo creare un copy consturctor per il primo tipo per creare un value net 
+
     std::vector<Layer> DNN;
     void Feedforward(std::array<int,N>& state);
-    // create feed forward and back prop and see what you are missing 
+    // test feed forward and create back prop and see what you are missing 
     // create error function
     
     void print_Net();
     
 protected:
     double activation_function(double neuron, int type);
-    std::vector<int> m_topology; // m_topology beacuase it is a memmber 
+    std::vector<int> m_topology; // m_topology beacuase it is a member
 };
 
 // constructor to fill the net 
@@ -40,26 +42,25 @@ inline Net::Net(std::vector<int> topology)
 }
 
 inline Net::Net(std::vector<int> topology, std::ifstream& infile){
-// must be filled 
+  // questo constuctor serve per qunado il modello ha gia fatto training e quindi posso inserire i pesi gia calcolati   
+  // must be filled 
+
 }
 
-
-// appunti
-// scrivu una funzione che faccia RELUE magari cerca su interntet 
 
 inline double Net::activation_function(double neuron, int type){
    if(type == Tanh) return tanh(neuron);
    if(type == ReLU) return (neuron <= 0) ? 0 : neuron; // ternary operator implmentation 
-  
+     
+    // I can add other activation function
     // defoult case
     return 0;
 }
 
 
 inline void Net::Feedforward(std::array<int,N>& state){
-    // i have to sum the moltiply neuron value to weight and then try this by adding it to the AI class
-    // i also have to add the bias to all the neuron and pass everything through relu
-    
+    // I have to test it and add comments 
+    //
     //implementation of Feedforward
     
     // fill the neurons of the first layer, I think I have to pass all of this trought a actiavtion function to

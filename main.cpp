@@ -20,13 +20,12 @@ int main(int argc, const char * argv[]) {
 
 // craa una funzione per il training the chiami epoche il multithread e lo puo fare con 2 4 8 16 questo lo fai a compile tie m:wq
 
-// sviluppa una rete neurale
+// prova  Feedforword()
 
-//  si pou provare feed forword)
+// exploration exploitation function call in base al numero se èminore di un numero che decersc
 
-//  poi sviluppiamo back prop 
-// possiamo usuare per il futuro , a questo punto bisogna capire emgio quando fare exploration and exploitation e come farlo funzionare
+// poi sviluppiamo back prop 
 
-// a questo punto crea una classe per il repaly buffer
+// a questo punto crea una classe per il repaly buffe per miglorarlo,e aggiungi ancche il secondo gioco
 
 // cerca di implenetare tutto assime

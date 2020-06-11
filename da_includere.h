@@ -23,6 +23,7 @@
 
 #define N 9 // N will be the dimension of the board and consequently teh input and output number of neuron in this net but can be changed to be appield for other games
 
+// activation functions
 // for now -> than I can add other 
 #define ReLU 0
 #define Tanh 1

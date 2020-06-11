@@ -14,7 +14,7 @@ public:
     std::vector<double> single_output_weights;
     
     double gen_random();
-    void gen_output(int n);
+    void gen_output(int n); // this function generate the output weights and fill single_output_weights
     void print_output_single_weights()const;
 };
 
