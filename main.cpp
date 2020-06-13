@@ -17,15 +17,21 @@ int main(int argc, const char * argv[]) {
 }
 
 // appunti
-
 // craa una funzione per il training the chiami epoche il multithread e lo puo fare con 2 4 8 16 questo lo fai a compile tie m:wq
 
-// prova  Feedforword()
+// adesso ! 
+// prova Feedforword() -> importante 
 
-// exploration exploitation function call in base al numero se èminore di un numero che decersc
+// dopo 
+// aggiusta exploration exploitation non lo ho acora implemenato del tutto
+// qui dovro anche aggiustare le funzioni random e renderle più random :-)
 
-// poi sviluppiamo back prop 
 
+
+// c'è tempo 
+// poi sviluppiamo back prop
+
+// questo e da vedere dopo 
 // a questo punto crea una classe per il repaly buffe per miglorarlo,e aggiungi ancche il secondo gioco
 
 // cerca di implenetare tutto assime

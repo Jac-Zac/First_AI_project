@@ -79,6 +79,23 @@ inline void Net::Feedforward(std::array<int,N>& state){
             DNN[j + 1].layer[k] = activation_function(DNN[j + 1].layer[k],ReLU); // activation function 
         }
     }
+     
+// if in print mode print the output layer 
+#if PRINT == true
+    // print the last layer neurons
+    for(size_t i = 0; i < N ; i++){
+       std::cout<<"The value of the neuron number "<<i<<" is = "<<DNN.back().layer[i]<<"\n"; // back because we care only about the last layer
+    }
+#endif
+
+    // after every Feedforward all neuron should be -> 0
+    // the one in the first layer are not a problem 
+    for(size_t j = 0 ; j < DNN.size() - 1; j++){
+        // loop trought layers
+        for(size_t k = 0 ; k < m_topology[j + 1] ; k++){  // loop trought the neurons in the new layer 
+            DNN[j + 1].layer[k] = 0.0 ;
+        }
+    }
 }
 
 
@@ -101,5 +118,4 @@ inline void Net::print_Net(){
             std::cout<<"\n";
         }
     }
-    
 }

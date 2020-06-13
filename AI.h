@@ -27,6 +27,7 @@ protected:
     bool won = false; // if won == true game is ended else we should end
     void exploit(Net& net);
     void explore();
+    double threshold = 5.1; // should be 0.1 and increament as the training progress so every episode, when <= exploit()
 };
     
 inline AI::AI()
@@ -39,8 +40,28 @@ inline AI::AI()
 
 // chose the best action following the feed forward
 inline void AI::exploit(Net& net){
-    // to implement 
+    // devo ancora mondifcarla per fare sapere alla rete neurale se sto facendo un azione casuale perchè quelle che mi ha dato la rete neurale era pessima lui non stava suggerendo una buona mosssa  
+    
+    //  we pass through the network
     net.Feedforward(state);
+
+    if(turn % 2 == 0){ // check the turn 
+       // this is for player 1
+       action_1 = std::distance(net.DNN.back().layer.begin(),std::max_element(net.DNN.back().layer.begin(), net.DNN.back().layer.end())); // back get the last of a list and thous the output layer
+    
+       // if the space on the board is aready fill then choose a random action  
+       if(state[action_1] != 0){
+           explore();
+       }
+    }else{
+       // this is for player 2
+       action_2 = std::distance(net.DNN.back().layer.begin(),std::max_element(net.DNN.back().layer.begin(), net.DNN.back().layer.end())); // back get the last of a list and thous the output layer
+    
+       // if the space on the board is aready fill then choose a random action  
+       if(state[action_2] != 0){
+           explore();
+       }
+    }
 }
 
 // explore in a random manner 
@@ -89,12 +110,18 @@ inline void AI::step(Net& net){
         // ai play
         // action = max Q_value (da creare un array Q value per una rete neuraler)
         // I have to check when to exploit
-        explore();
+        
+        if(threshold <= ((double) random() / (RAND_MAX))) exploit(net);
+        else explore();
+        
         // exploit se il numero random è maggiore della soglia 
         state[action_1] = 1;
     }else{
         // i play for now than 2 ai will play
-        explore();
+
+        // exploit(net); // the second agent is always exploiting
+
+        explore(); // but for now we will explore to make it easyer 
         state[action_2] = -1;
     }
     print_board();
@@ -136,5 +163,4 @@ inline void AI::train_AI(){
     }
     
     net.print_Net();
-   
 }
