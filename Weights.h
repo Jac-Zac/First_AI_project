@@ -13,32 +13,35 @@ class Weights{
 public:
     std::vector<double> single_output_weights;
     
-    void gen_output(int n); // this function generate the output weights and fill single_output_weights
-    double gen_random();
+    void gen_output(int n, int& index); // this function generate the output weights and fill single_output_weights
+    double gen_random(int& index);
     void print_output_single_weights()const;
 };
 
-inline void Weights::gen_output(int n){
+inline void Weights::gen_output(int n,int& index){
      for(int i = 0 ; i < n ; i++){
-        single_output_weights.emplace_back(gen_random());
+        single_output_weights.emplace_back(gen_random(index));
      }
 }
 
-inline double Weights::gen_random(){
+inline double Weights::gen_random(int& index){
   
 // normal distribution media = 0, diviation = 1
 
     std::default_random_engine generator;
     
     //Normal number distributon -> gaussian
-    std::normal_distribution<double> distribution(0,1.0); // median and deviationn     
+    std::normal_distribution<double> distribution(0,1); // median and deviationn     
 
     //Initialize with non-deterministic seeds
     generator.seed(std::random_device{}());
 
-// I have to add Xevier initialization 
-
-    return distribution(generator);
+    // Inizialization for ReLu (Xavier initialization)
+    
+    // index start at 0 which is what I want and go to SIZE - 2
+    
+    // I have to fix this 
+    return distribution(generator)*sqrt(2/topology[index]);
 }
 
 inline void Weights::print_output_single_weights()const{
