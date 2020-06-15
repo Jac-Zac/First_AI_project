@@ -148,14 +148,9 @@ inline void AI::check_won(){
 
 inline void AI::train_AI(){
 // this is just a test for now 
-// I think the topology should be N, 12 , 15 , 9 but for testing it will be simpler
-    std::vector<int> topology;
-    topology.push_back(N);
-    topology.push_back(12);
-    topology.push_back(15);
-    topology.push_back(12);
-    topology.push_back(N);
-    Net net(topology);
+    // I will use the global variable topology -> da_includere 
+
+    Net net;
     episode(net);
     
     for(size_t i = 0 ; i < batch_size ; i++ ){

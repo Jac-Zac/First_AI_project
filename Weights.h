@@ -13,8 +13,8 @@ class Weights{
 public:
     std::vector<double> single_output_weights;
     
-    double gen_random();
     void gen_output(int n); // this function generate the output weights and fill single_output_weights
+    double gen_random();
     void print_output_single_weights()const;
 };
 
@@ -26,18 +26,19 @@ inline void Weights::gen_output(int n){
 
 inline double Weights::gen_random(){
   
-  // min and max sohuldn't be too extream to avoid vanishing weigths
+// normal distribution media = 0, diviation = 1
 
-    //Type of random number distribution
-    std::uniform_real_distribution<double> dist(0.1,0.9);  //(min, max)
-
-    //Mersenne Twister: Good quality random number generator
-    std::mt19937 rng;
+    std::default_random_engine generator;
+    
+    //Normal number distributon -> gaussian
+    std::normal_distribution<double> distribution(0,1.0); // median and deviationn     
 
     //Initialize with non-deterministic seeds
-    rng.seed(std::random_device{}());
+    generator.seed(std::random_device{}());
 
-    return dist(rng);
+// I have to add Xevier initialization 
+
+    return distribution(generator);
 }
 
 inline void Weights::print_output_single_weights()const{

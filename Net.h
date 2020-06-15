@@ -13,8 +13,8 @@
 class Net : public Layer
 {
 public:
-    Net(std::vector<int> topology); // constructor weights need to be initizlized
-    Net(std::vector<int> topology, std::ifstream& infile); // constructor weights are alread craeted and saved in another file 
+    Net(); // constructor weights need to be initizlized
+    Net(std::ifstream& infile); // constructor weights are alread craeted and saved in another file 
 
   // devo creare un copy consturctor per il primo tipo per creare un value net 
 
@@ -27,21 +27,19 @@ public:
     
 protected:
     double activation_function(double neuron, int type);
-    std::vector<int> m_topology; // m_topology beacuase it is a member
 };
 
 // constructor to fill the net 
-inline Net::Net(std::vector<int> topology)
-:m_topology(topology) // member initializer list
+inline Net::Net()
 {
-    for(int j = 0 ; j < m_topology.size(); j++){
+    for(int j = 0 ; j < SIZE ; j++){  // SIZE is the size of the toplogy  
         Layer l;
-        l.create_layer(m_topology,j);
+        l.create_layer(j);
         DNN.push_back(l);
      }
 }
 
-inline Net::Net(std::vector<int> topology, std::ifstream& infile){
+inline Net::Net(std::ifstream& infile){
   // questo constuctor serve per qunado il modello ha gia fatto training e quindi posso inserire i pesi gia calcolati   
   // must be filled 
 
@@ -70,9 +68,9 @@ inline void Net::Feedforward(std::array<int,N>& state){
     
     for(size_t j = 0 ; j < DNN.size() - 1; j++){
         // loop trought layers
-        for(size_t k = 0 ; k < m_topology[j + 1] ; k++){  // loop trought the neurons in the new layer 
+        for(size_t k = 0 ; k < topology[j + 1] ; k++){  // loop trought the neurons in the new layer 
             // as a testK
-            for(size_t i = 0; i < m_topology[j]; i++){
+            for(size_t i = 0; i < topology[j]; i++){
                 DNN[j + 1].layer[k] += DNN[j].layer[i]*DNN[j].output_weights[i].single_output_weights[k];
             }
             // this is just as a test 
@@ -92,7 +90,7 @@ inline void Net::Feedforward(std::array<int,N>& state){
     // the one in the first layer are not a problem 
     for(size_t j = 0 ; j < DNN.size() - 1; j++){
         // loop trought layers
-        for(size_t k = 0 ; k < m_topology[j + 1] ; k++){  // loop trought the neurons in the new layer 
+        for(size_t k = 0 ; k < topology[j + 1] ; k++){  // loop trought the neurons in the new layer 
             DNN[j + 1].layer[k] = 0.0 ;
         }
     }
@@ -114,7 +112,7 @@ inline void Net::print_Net(){
     for(int i = 0; i < DNN.size(); i++){
         if(i != (DNN.size() - 1)){
             std::cout<<"Print output weights Layer "<<i<<"\n"<<"----------------------------------\n"<<"\n";
-            DNN[i].print_output_matrix(m_topology,i);
+            DNN[i].print_output_matrix(i);
             std::cout<<"\n";
         }
     }

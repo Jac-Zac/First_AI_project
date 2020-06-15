@@ -10,14 +10,14 @@
 class Layer{
 public:
     std::vector<double> layer; // neurons in a layer 
-    void create_layer(std::vector<int>& topology, int& index); // we have to pass the topology this create the layer and the weights 
+    void create_layer(int& index); // we have to pass the topology this create the layer and the weights 
 
-    void print_output_matrix(std::vector<int>& topology, int& index)const; // print matrix of the output weight 
+    void print_output_matrix(int& index)const; // print matrix of the output weight 
     std::vector<Weights> output_weights; 
 };
 
 
-inline void Layer::create_layer(std::vector<int>& topology, int& index){ // index is the layayer that we are on
+inline void Layer::create_layer(int& index){ // index is the layayer that we are on
         // this is for output layers
         
         for(int j = 0; j < topology[index]; j++){
@@ -32,7 +32,7 @@ inline void Layer::create_layer(std::vector<int>& topology, int& index){ // inde
     }
 }
 
-inline void Layer::print_output_matrix(std::vector<int>& topology, int& index) const {
+inline void Layer::print_output_matrix(int& index) const {
     for(int j = 0; j < topology[index]; j++){
         output_weights[j].print_output_single_weights();
     }
