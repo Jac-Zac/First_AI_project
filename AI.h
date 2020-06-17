@@ -119,9 +119,8 @@ inline void AI::step(Net& net){
     }else{
         // i play for now than 2 ai will play
 
-        // exploit(net); // the second agent is always exploiting
+        exploit(net); // the second agent is always exploiting
 
-        explore(); // but for now we will explore to make it easyer 
         state[action_2] = -1;
     }
     print_board();

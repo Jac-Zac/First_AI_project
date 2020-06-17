@@ -24,7 +24,7 @@
 #define N 9 // N will be the dimension of the board and consequently teh input and output number of neuron in this net but can be changed to be appield for other games
 
 // funzionalità utlizzata soprattutto per il testing 
-#define PRINT true  // if PRINT == true -> print the output layer after every FeedForward of the net
+#define PRINT false  // if PRINT == true -> print the output layer after every FeedForward of the net
 
 // activation functions
 // for now -> than I can add other 
