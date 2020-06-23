@@ -32,5 +32,5 @@
 #define Tanh 1
 
 // topology of the network -> this can change I think I will try with {N,12,15,12,N}
-#define SIZE 3 // SIZE -> this is the size of the topology 
+#define SIZE 3 // SIZE -> this is the size of the topology
 std::array<int,SIZE> topology = {N,12,N}; // test per adesso

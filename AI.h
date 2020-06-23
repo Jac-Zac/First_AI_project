@@ -110,8 +110,13 @@ inline void AI::step(Net& net){
         // ai play
         // action = max Q_value (da creare un array Q value per una rete neuraler)
         // I have to check when to exploit
+
+        // per adesso è un test ma bisonga ripararlo
         
-        if(threshold <= ((double) random() / (RAND_MAX))) exploit(net);
+	if(threshold <= ((double) random() / (RAND_MAX))) {
+		exploit(net);
+		std::cout<<"Exploit !"<<std::endl;
+	}
         else explore();
         
         // exploit se il numero random è maggiore della soglia 
