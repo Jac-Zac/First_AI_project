@@ -1,3 +1,4 @@
+
 //
 //  AI.h
 //  AI_Tria 2.0
@@ -12,94 +13,111 @@
 
 class AI : public game {
 public:
-    // ai class
-    AI();
-    void step(Net& net);
-    void episode(Net& net);
-    void check_won();
-    void train_AI();
+// ai class
+AI();
+void step(Net& net);
+void episode(Net& net);
+void check_won();
+void train_AI();
 protected:
-    size_t batch_size = 1; // for now bactch size is only 1
-    unsigned short turn = 0;
-    unsigned short player;
-    unsigned short action_1 = 0;
-    unsigned short action_2 = 1;
-    bool won = false; // if won == true game is ended else we should end
-    void exploit(Net& net);
-    void explore();
-    double threshold = 5.1; // should be 0.1 and increament as the training progress so every episode, when <= exploit()
+size_t batch_size = 1; // for now bactch size is only 1
+unsigned short turn = 0;
+unsigned short player;
+unsigned short action_1 = 0;
+unsigned short action_2 = 1;
+bool won = false; // if won == true game is ended else we should end
+void exploit(Net& net);
+void explore();
+double threshold = 0; // should be 0.1 and increament as the training progress so every episode, when <= exploit()
+bool rand_exp(); // random number to test if I want to explore or exploit 
+bool exploiting; // variable to see if it will exaploit or explore 
 };
-    
+
 inline AI::AI()
 {
-    std::cout<<"\n";
-    std::cout<<"Ai trianing ... \n";
+std::cout<<"\n";
+std::cout<<"Ai trianing ... \n";
 }
 
 // un idea può essere di avere una batch size di tipo 5 che viene processata in parallelo da mutlithreading però ricordati di cambiare alive in non static e anche state 
 
 // chose the best action following the feed forward
 inline void AI::exploit(Net& net){
-    // devo ancora mondifcarla per fare sapere alla rete neurale se sto facendo un azione casuale perchè quelle che mi ha dato la rete neurale era pessima lui non stava suggerendo una buona mosssa  
-    
-    //  we pass through the network
-    net.Feedforward(state);
+// devo ancora mondifcarla per fare sapere alla rete neurale se sto facendo un azione casuale perchè quelle che mi ha dato la rete neurale era pessima lui non stava suggerendo una buona mosssa  
 
-    if(turn % 2 == 0){ // check the turn 
-       // this is for player 1
-       action_1 = std::distance(net.DNN.back().layer.begin(),std::max_element(net.DNN.back().layer.begin(), net.DNN.back().layer.end())); // back get the last of a list and thous the output layer
-    
-       // if the space on the board is aready fill then choose a random action  
-       if(state[action_1] != 0){
-           explore();
-       }
-    }else{
-       // this is for player 2
-       action_2 = std::distance(net.DNN.back().layer.begin(),std::max_element(net.DNN.back().layer.begin(), net.DNN.back().layer.end())); // back get the last of a list and thous the output layer
-    
-       // if the space on the board is aready fill then choose a random action  
-       if(state[action_2] != 0){
-           explore();
-       }
-    }
+//  we pass through the network
+net.Feedforward(state);
+
+if(turn % 2 == 0){ // check the turn 
+// this is for player 1
+action_1 = std::distance(net.DNN.back().layer.begin(),std::max_element(net.DNN.back().layer.begin(), net.DNN.back().layer.end())); // back get the last of a list and thous the output layer
+
+// if the space on the board is aready fill then choose a random action  
+if(state[action_1] != 0){
+   explore();
+}
+}else{
+// this is for player 2
+action_2 = std::distance(net.DNN.back().layer.begin(),std::max_element(net.DNN.back().layer.begin(), net.DNN.back().layer.end())); // back get the last of a list and thous the output layer
+
+// if the space on the board is aready fill then choose a random action  
+if(state[action_2] != 0){
+   explore();
+}
+}
 }
 
 // explore in a random manner 
 inline void AI::explore(){
-    if(turn % 2 == 0){
-        do{
-            action_1 = rand() % 9;
-        }while(state[action_1] != 0);
-    }else{
-        do{
-            action_2 = rand() % 9;
-        }while(state[action_2] != 0);
-    }
+   if(turn % 2 == 0){
+      do{
+       action_1 = rand() % 9;
+      }while(state[action_1] != 0);
+   }else{
+      do{
+         action_2 = rand() % 9;
+      }while(state[action_2] != 0);
+   }
 }
 
 // inoltre doveri sviluppare dele reword 
 // da correggere 
 inline void AI::episode(Net& net){ // this should be an episode not an epoche
-    std::srand((unsigned)time(0));
-    while(won == false){
-        player = (turn % 2 == 0) ? 1 : 2;
-        std::cout<<"--------------------"<<"\n"<<"Player number "<< player<<" Has the move"<<"\n";
-        step(net);
-        // check if somebody won in this turn
-        check_won();
+std::srand((unsigned)time(0));
+while(won == false){
+player = (turn % 2 == 0) ? 1 : 2;
+std::cout<<"--------------------"<<"\n"<<"Player number "<< player<<" Has the move"<<"\n";
+step(net);
+// check if somebody won in this turn
+check_won();
 
-        // control for draw
-        if(turn == 9 && won == false){
-            std::cout<<"Game ended in a draw --------------------\n";
-            return;
-        }
-        
-        // to check if game ended
-        if(won == true) {
-            std::cout<<"Player "<<player<<" won \n";
-        }
-    }
+// control for draw
+if(turn == 9 && won == false){
+    std::cout<<"Game ended in a draw --------------------\n";
+    return;
 }
+
+// to check if game ended
+if(won == true) {
+    std::cout<<"Player "<<player<<" won \n";
+}
+}
+}
+
+inline bool AI::rand_exp(){
+
+std::default_random_engine generator;
+
+std::uniform_real_distribution<double> distribution(0.1,9.9); // median and deviation
+
+//Initialize with non-deterministic seeds
+generator.seed(std::random_device{}());
+
+// if we return true than it will exploit else it will explore 
+if(distribution(generator) >= threshold) return true;
+else{return false;}
+}
+
 
 // this should not be an episode but is just 1 step 
 inline void AI::step(Net& net){
@@ -112,12 +130,10 @@ inline void AI::step(Net& net){
         // I have to check when to exploit
 
         // per adesso è un test ma bisonga ripararlo
-        
-	if(threshold <= ((double) random() / (RAND_MAX))) {
-		exploit(net);
-		std::cout<<"Exploit !"<<std::endl;
-	}
-        else explore();
+	exploiting = rand_exp();
+	if(exploiting == true){
+	    exploit(net);
+	}else explore();
         
         // exploit se il numero random è maggiore della soglia 
         state[action_1] = 1;

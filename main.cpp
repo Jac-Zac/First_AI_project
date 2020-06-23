@@ -19,10 +19,11 @@ int main(int argc, const char * argv[]) {
 // appunti
 // craa una funzione per il training the chiami epoche il multithread e lo puo fare con 2 4 8 16 questo lo fai a compile tie m:wq
 
+// fix di exploration exploitation 
+
 // Xievier (o come si chiama ) inizialization weights I have to do this  
 
-// adesso ! 
-// prova Feedforword() -> importante 
+
 
 // dopo 
 // aggiusta exploration exploitation non lo ho acora implemenato del tutto
