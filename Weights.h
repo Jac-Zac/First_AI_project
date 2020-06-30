@@ -31,19 +31,23 @@ inline double Weights::gen_random(int& index){
     std::default_random_engine generator;
     
     //Normal number distributon -> gaussian
+	
+	// He-Normal Initialization
    
     // Inizialization for ReLu (Xavier initialization)
     
     // index start at 0 which is what I want and go to SIZE - 1 
    
     // I have to fix this 
-    std::normal_distribution<double> distribution(0,1.0); // median and deviation
+    std::normal_distribution<double> distribution(0, sqrt(2.0 / (topology[index]))); // median and deviation
+
+	// IMPORTANT DO NOT FORGET TO DIVIDE NOT 2 BUT 2.0 -> IF YOU DO NOT DO THAT IT WILL PERFORME A INT DIVISION 
 
     //Initialize with non-deterministic seeds
     generator.seed(std::random_device{}());
-      
-    
-    return distribution(generator);
+
+
+    return distribution(generator); 
 }
 
 inline void Weights::print_output_single_weights()const{

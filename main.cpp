@@ -12,29 +12,22 @@
 // forse dovrei mettere la topologia da dentro da_includere
 
 int main(int argc, const char * argv[]) {
-    AI obj;
-    obj.train_AI();    
+	AI obj;
+	obj.train_AI();    
 }
 
 // appunti
 // craa una funzione per il training the chiami epoche il multithread e lo puo fare con 2 4 8 16 questo lo fai a compile tie m:wq
 
-// fix di exploration exploitation 
 
 // Xievier (o come si chiama ) inizialization weights I have to do this  
 
-
-
-// dopo 
-// aggiusta exploration exploitation non lo ho acora implemenato del tutto
-// qui dovro anche aggiustare le funzioni random e renderle più random :-)
-
-
-
 // c'è tempo 
 // poi sviluppiamo back prop
+// testare back prop
 
 // questo e da vedere dopo 
+// devo cercare di unire il tutto in modo che funzioni 
 // a questo punto crea una classe per il repaly buffe per miglorarlo,e aggiungi ancche il secondo gioco
 
-// cerca di implenetare tutto assime
+// posso provare a implementare versioni diverse di tria come notakto
