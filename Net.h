@@ -14,7 +14,12 @@ class Net : public Layer
 {
 public:
     Net(); // constructor weights need to be initizlized
-    Net(std::ifstream& infile); // constructor weights are alread craeted and saved in another file 
+
+#if SAVE == true
+	~Net();
+#endif
+
+	Net(std::ifstream& infile); // constructor weights are alread craeted and saved in another file 
 
   // devo creare un copy consturctor per il primo tipo per creare un value net 
 
@@ -117,3 +122,11 @@ inline void Net::print_Net(){
         }
     }
 }
+
+#if SAVE == true
+inline Net::~Net(){
+	std::ofstream saved_weights;
+	saved_weights.open ("Saved Weigths");
+	saved_weights.close();
+}
+#endif 
