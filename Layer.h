@@ -13,7 +13,9 @@ public:
     void create_layer(int& index); // we have to pass the topology this create the layer and the weights 
 
     void print_output_matrix(int& index)const; // print matrix of the output weight 
-    std::vector<Weights> output_weights; 
+	void save_matrix(int& index, std::ofstream& saved_weights);
+
+	std::vector<Weights> output_weights; 
 };
 
 
@@ -37,4 +39,12 @@ inline void Layer::print_output_matrix(int& index) const {
         output_weights[j].print_output_single_weights();
     }
     std::cout<<"\n";
+}
+
+// save the weight matrix to a file by passing the file std::ostream by reference ! 
+inline void Layer::save_matrix(int& index, std::ofstream& saved_weights){
+    for(int j = 0; j < topology[index]; j++){
+        output_weights[j].save_weights(saved_weights);
+    }
+	saved_weights << "\n";
 }

@@ -123,10 +123,18 @@ inline void Net::print_Net(){
     }
 }
 
+// I can decide if I want to save the weights or not at compile time and this function allows me to save them in a file 
 #if SAVE == true
 inline Net::~Net(){
 	std::ofstream saved_weights;
-	saved_weights.open ("Saved Weigths");
+	saved_weights.open ("Saved_Weigths");
+
+	for(int i = 0; i < DNN.size(); i++){
+		if(i != (DNN.size() - 1)){
+			DNN[i].save_matrix(i,saved_weights);
+        }
+    }
+	saved_weights << "\n";
 	saved_weights.close();
 }
 #endif 

@@ -16,6 +16,7 @@ public:
     void gen_output(int n, int& index); // this function generate the output weights and fill single_output_weights
     double gen_random(int& index);
     void print_output_single_weights()const;
+	void save_weights(std::ofstream& saved_weights);
 };
 
 inline void Weights::gen_output(int n,int& index){
@@ -55,4 +56,14 @@ inline void Weights::print_output_single_weights()const{
     std::cout<<it<<" ";
   }
   std::cout<<"\n";
+}
+
+// function to save the weights in a file 
+inline void Weights::save_weights(std::ofstream& saved_weights){
+
+    for(auto& it : single_output_weights){
+		saved_weights << it << " ";
+	}
+
+	saved_weights<<"\n";
 }
