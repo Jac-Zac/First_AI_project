@@ -28,5 +28,10 @@ make
 ```
 make clean
 ```
+
+**To delete the weights file too use**
+```
+make clean_weights
+```
 <b>this project has just started reacently<b>
 

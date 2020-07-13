@@ -5,3 +5,5 @@ main.o: main.cpp
 	g++ -c -O3 -std=gnu++17 main.cpp
 clean:
 	rm -rf *.o output	
+clean_weights:
+	rm -rf *.o output Saved_Weigths	

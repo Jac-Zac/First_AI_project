@@ -26,7 +26,7 @@
 
 // funzionalità utlizzata soprattutto per il testing 
 #define PRINT true  // if PRINT == true -> print the output layer after every FeedForward of the net
-#define SAVE false // if SAVE == true -> the weights are going to be saved in a new file
+#define SAVE true // if SAVE == true -> the weights are going to be saved in a new file
 // activation functions
 // for now -> than I can add other 
 #define ReLU 0
