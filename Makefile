@@ -6,4 +6,4 @@ main.o: main.cpp
 clean:
 	rm -rf *.o output	
 clean_weights:
-	rm -rf *.o output Saved_Weigths	
+	rm -rf *.o output Saved_Weights	

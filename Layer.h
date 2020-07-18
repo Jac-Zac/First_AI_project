@@ -19,12 +19,12 @@ public:
 };
 
 
-inline void Layer::create_layer(int& index){ // index is the layayer that we are on
+inline void Layer::create_layer(int& index){ // index is the layer that we are on
         // this is for output layers
         
         for(int j = 0; j < topology[index]; j++){
             Weights o_w; // input weights
-            o_w.gen_output(topology[index + 1],index); // since we wannt the input weight we need to pass teh number of neurones of the layer after
+            o_w.gen_output(topology[index + 1],index); // since we want the input weight we need to pass the number of neurones of the layer after
             output_weights.emplace_back(o_w);
         }
 

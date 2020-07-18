@@ -1,4 +1,3 @@
-
 //
 //  AI.h
 //  AI_Tria 2.0
@@ -20,7 +19,7 @@ AI();
 	void check_won();
 	void train_AI();
 protected:	
-	size_t batch_size = 1; // for now bactch size is only 1
+	size_t batch_size = 1; // for now batch size is only 1
 	unsigned short turn = 0;
 	unsigned short player;
 	unsigned short action_1 = 0;
@@ -28,9 +27,9 @@ protected:
 	bool won = false; // if won == true game is ended else we should end
 	void exploit(Net& net);
 	void explore();
-	double threshold = 0; // should be 0.1 and increament as the training progress so every episode, when <= exploit()
+	double threshold = 0; // should be 0.1 and increment as the training progress so every episode, when <= exploit()
 	bool rand_exp(); // random number to test if I want to explore or exploit 
-	bool exploiting; // variable to see if it will exaploit or explore 
+	bool exploiting; // variable to see if it will exploit or explore 
 };
 
 inline AI::AI(){
@@ -51,7 +50,7 @@ inline void AI::exploit(Net& net){
 		// this is for player 1
 		action_1 = std::distance(net.DNN.back().layer.begin(),std::max_element(net.DNN.back().layer.begin(), net.DNN.back().layer.end())); // back get the last of a list and thous the output layer
 
-	// if the space on the board is aready fill then choose a random action  
+	// if the space on the board is already fill then choose a random action  
 		if(state[action_1] != 0){
 			explore();
 		}
@@ -59,7 +58,7 @@ inline void AI::exploit(Net& net){
 		// this is for player 2
 		action_2 = std::distance(net.DNN.back().layer.begin(),std::max_element(net.DNN.back().layer.begin(), net.DNN.back().layer.end())); // back get the last of a list and thous the output layer
 
-		// if the space on the board is aready fill then choose a random action  
+		// if the space on the board is already fill then choose a random action  
 		if(state[action_2] != 0){
 			explore();
 		}
@@ -122,7 +121,7 @@ inline bool AI::rand_exp(){
 inline void AI::step(Net& net){
     //funzione per giocare
     
-    // i have to check if move is allowd if the slot is != 0 move should be the next best Q_value
+    // i have to check if move is allowed if the slot is != 0 move should be the next best Q_value
     if(turn % 2 == 0){
         // ai play
         // action = max Q_value (da creare un array Q value per una rete neuraler)
@@ -150,7 +149,7 @@ inline void AI::step(Net& net){
 
 inline void AI::check_won(){
     
-    // this is too check if anyone won the game this turn I't can be coded with a loop but that make the time complezity higher
+    // this is too check if anyone won the game this turn It can be coded with a loop but that make the time complexity higher
     // check rows
     
     if((state[0] == 1 && state[1] == 1 && state[2] == 1) || (state[3] == 1 && state[4] == 1 && state[5] == 1) || (state[6] == 1 && state[7] == 1 && state[8] == 1)) won = true;

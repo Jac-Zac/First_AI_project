@@ -13,15 +13,15 @@
 class Net : public Layer
 {
 public:
-    Net(); // constructor weights need to be initizlized
+    Net(); // constructor weights need to be initialized
 
 #if SAVE == true
 	~Net();
 #endif
 
-	Net(std::ifstream& infile); // constructor weights are alread craeted and saved in another file 
+	Net(std::ifstream& infile); // constructor weights are already created and saved in another file 
 
-  // devo creare un copy consturctor per il primo tipo per creare un value net 
+  // devo creare un copy constructor per il primo tipo per creare un value net 
 
     std::vector<Layer> DNN;
     void Feedforward(std::array<int,N>& state);
@@ -37,7 +37,7 @@ protected:
 // constructor to fill the net 
 inline Net::Net()
 {
-    for(int j = 0 ; j < SIZE ; j++){  // SIZE is the size of the toplogy  
+    for(int j = 0 ; j < SIZE ; j++){  // SIZE is the size of the topology  
         Layer l;
         l.create_layer(j);
         DNN.push_back(l);
@@ -45,7 +45,7 @@ inline Net::Net()
 }
 
 inline Net::Net(std::ifstream& infile){
-  // questo constuctor serve per qunado il modello ha gia fatto training e quindi posso inserire i pesi gia calcolati   
+  // questo constructor serve per qunado il modello ha gia fatto training e quindi posso inserire i pesi gia calcolati   
   // must be filled 
 
 }
@@ -53,10 +53,10 @@ inline Net::Net(std::ifstream& infile){
 
 inline double Net::activation_function(double neuron, int type){
    if(type == Tanh) return tanh(neuron);
-   if(type == ReLU) return (neuron <= 0) ? 0 : neuron; // ternary operator implmentation 
+   if(type == ReLU) return (neuron <= 0) ? 0 : neuron; // ternary operator implementation 
      
     // I can add other activation function
-    // defoult case
+    // default case
     return 0;
 }
 
@@ -66,15 +66,15 @@ inline void Net::Feedforward(std::array<int,N>& state){
     //
     //implementation of Feedforward
     
-    // fill the neurons of the first layer, I think I have to pass all of this trought a actiavtion function to
+    // fill the neurons of the first layer, I think I have to pass all of this trough an activation function to
     for(size_t i = 0; i < N ; i++){
-       DNN[0].layer[i] = state[i]; // fill all the imput neuron with the state that was passed in
+       DNN[0].layer[i] = state[i]; // fill all the input neuron with the state that was passed in
     }
     
     for(size_t j = 0 ; j < DNN.size() - 1; j++){
-        // loop trought layers
-        for(size_t k = 0 ; k < topology[j + 1] ; k++){  // loop trought the neurons in the new layer 
-            // as a testK
+        // loop trough layers
+        for(size_t k = 0 ; k < topology[j + 1] ; k++){  // loop trough the neurons in the new layer 
+            // as a test
             for(size_t i = 0; i < topology[j]; i++){
                 DNN[j + 1].layer[k] += DNN[j].layer[i]*DNN[j].output_weights[i].single_output_weights[k];
             }
@@ -94,8 +94,8 @@ inline void Net::Feedforward(std::array<int,N>& state){
     // after every Feedforward all neuron should be -> 0
     // the one in the first layer are not a problem 
     for(size_t j = 0 ; j < DNN.size() - 1; j++){
-        // loop trought layers
-        for(size_t k = 0 ; k < topology[j + 1] ; k++){  // loop trought the neurons in the new layer 
+        // loop trough layers
+        for(size_t k = 0 ; k < topology[j + 1] ; k++){  // loop trough the neurons in the new layer 
             DNN[j + 1].layer[k] = 0.0 ;
         }
     }
@@ -113,7 +113,7 @@ inline void Net::print_Net(){
         std::cout<<std::endl;
     }
 
-    // print matrix of weigths
+    // print matrix of weights
     for(int i = 0; i < DNN.size(); i++){
         if(i != (DNN.size() - 1)){
             std::cout<<"Print output weights Layer "<<i<<"\n"<<"----------------------------------\n"<<"\n";
@@ -127,7 +127,7 @@ inline void Net::print_Net(){
 #if SAVE == true
 inline Net::~Net(){
 	std::ofstream saved_weights;
-	saved_weights.open ("Saved_Weigths");
+	saved_weights.open ("Saved_Weights");
 
 	for(int i = 0; i < DNN.size(); i++){
 		if(i != (DNN.size() - 1)){

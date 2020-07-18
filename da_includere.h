@@ -20,9 +20,9 @@
 #include<time.h>
 #include<math.h>
 
-// here we have the therfore created the macro N 
+// here we have the therefore created the macro N 
 
-#define N 9 // N will be the dimension of the board and consequently teh input and output number of neuron in this net but can be changed to be appield for other games
+#define N 9 // N will be the dimension of the board and consequently the input and output number of neuron in this net but can be changed to be applied for other games
 
 // funzionalità utlizzata soprattutto per il testing 
 #define PRINT true  // if PRINT == true -> print the output layer after every FeedForward of the net
