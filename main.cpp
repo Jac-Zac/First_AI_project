@@ -13,7 +13,10 @@
 
 int main(int argc, const char * argv[]) {
 	AI obj;
-	obj.train_AI();    
+	// train 
+//	obj.train_AI();    
+    // test 
+  obj.test_AI();
 }
 
 // appunti

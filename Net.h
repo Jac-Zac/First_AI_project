@@ -19,7 +19,7 @@ public:
 	~Net();
 #endif
 
-	Net(std::ifstream& infile); // constructor weights are already created and saved in another file 
+	Net(std::ifstream& previous_weights); // constructor weights are already created and saved in another file 
 
   // devo creare un copy constructor per il primo tipo per creare un value net 
 
@@ -44,10 +44,20 @@ inline Net::Net()
      }
 }
 
-inline Net::Net(std::ifstream& infile){
-  // questo constructor serve per qunado il modello ha gia fatto training e quindi posso inserire i pesi gia calcolati   
-  // must be filled 
+// testing this right now I have to implement it on other files 
+// posso usare le condizioni tipo save file in da_includere per mettere a posto nel file AI.h e main.h 
 
+inline Net::Net(std::ifstream& previous_weights){
+  // questo constructor serve per qunado il modello ha gia fatto training e quindi posso inserire i pesi gia calcolati   
+		
+  // this is just to test
+		std::string line;
+		while ( std::getline (previous_weights,line) )
+    {
+			std::cout << line << '\n';
+    }		
+   // end testing
+   // deve chiamare una nuova funzione dentro Layer.h che serve a prendere i pesi da l' input_file 
 }
 
 

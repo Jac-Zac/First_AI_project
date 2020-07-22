@@ -18,6 +18,7 @@ AI();
 	void episode(Net& net);
 	void check_won();
 	void train_AI();
+	void test_AI();
 protected:	
 	size_t batch_size = 1; // for now batch size is only 1
 	unsigned short turn = 0;
@@ -176,4 +177,13 @@ inline void AI::train_AI(){
     }
     
     net.print_Net();
+}
+
+
+inline void AI::test_AI(){
+	
+		std::ifstream previous_weights("Saved_Weights");
+		Net net(previous_weights);
+		previous_weights.close();
+
 }
