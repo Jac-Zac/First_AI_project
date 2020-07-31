@@ -51,12 +51,14 @@ inline Net::Net(std::ifstream& previous_weights){
   // questo constructor serve per qunado il modello ha gia fatto training e quindi posso inserire i pesi gia calcolati   
 		
   // this is just to test
-		std::string line;
-		while ( std::getline (previous_weights,line) )
-    {
-			std::cout << line << '\n';
-    }		
-   // end testing
+		std::string word; 
+		while(previous_weights.good()){
+				std::cout << word << " ";
+				previous_weights >> word;
+		}
+
+
+  // end testing
    // deve chiamare una nuova funzione dentro Layer.h che serve a prendere i pesi da l' input_file 
 }
 

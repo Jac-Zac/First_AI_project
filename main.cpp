@@ -14,9 +14,9 @@
 int main(int argc, const char * argv[]) {
 	AI obj;
 	// train 
-//	obj.train_AI();    
+	obj.train_AI();    
     // test 
-  obj.test_AI();
+//  obj.test_AI();
 }
 
 // appunti
