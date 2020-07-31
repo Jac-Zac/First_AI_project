@@ -2,7 +2,7 @@
 
 ## Synopsis
 
-This is a project with that I have created to learn and consolidate my knowledge about AI and DQN. It is now still in the work and I want to shear it with however is interested (the project is complitly coded by myself and it is all in c++)
+This is a project that I have created to learn and consolidate my knowledge about AI and DQN. It is now still in the work and I want to shear it with whoever is interested (the project is complitly coded by myself and it is all in c++)
 
 ## Code Example
 This code will allow you to use a pre-trained model or training a agent by yourself in a reinforcement learning environment by self play. The aim of this project is for now to achieve human level skill in Tic_Tac_Toe
