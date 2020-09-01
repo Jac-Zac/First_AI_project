@@ -15,7 +15,7 @@ class Net : public Layer
 public:
     Net(); // constructor weights need to be initialized
 
-#if SAVE == true
+#if TEST == false
 	~Net();
 #endif
 
@@ -136,7 +136,7 @@ inline void Net::print_Net(){
 }
 
 // I can decide if I want to save the weights or not at compile time and this function allows me to save them in a file 
-#if SAVE == true
+#if TEST == false
 inline Net::~Net(){
 	std::ofstream saved_weights;
 	saved_weights.open ("Saved_Weights");

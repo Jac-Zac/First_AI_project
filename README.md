@@ -6,6 +6,7 @@ This is a project that I have created to learn and consolidate my knowledge abou
 
 ## Code Example
 This code will allow you to use a pre-trained model or training a agent by yourself in a reinforcement learning environment by self play. The aim of this project is for now to achieve human level skill in Tic_Tac_Toe
+Btw I now using a DQN for this is overkill, but I want to learn more and this is the only reason for why I'm doing it 
 
 ## Motivation
 I'm mostly doing this project as a learning experiences but I also want to shear it with the word
@@ -33,5 +34,17 @@ make clean
 ```
 make clean_weights
 ```
+
+### Usage for testing 
+A good easy way to use the program for now is to run the script testing with the command ``` ./testing.sh ```
+
+The script compiles and run the program and then change the TEST variable. When using this script keep in mind that it is made for MacOS and thus it might cause unexpected behavoiurs on GNU/linux do to the difference of the core utilities (such as ``` sed ``` )  
+
+### At what point am I ? 🔖
+
+1. I have to add a way to save reuse the saved weight for testing 
+2. I have to code Back_Prop
+3. ... ( There is no point in listing everyithing right now )
+
 <b>this project has just started recently<b>
 

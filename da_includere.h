@@ -26,8 +26,8 @@
 #define N 9 // N will be the dimension of the board and consequently the input and output number of neuron in this net but can be changed to be applied for other games
 
 // funzionalità utlizzata soprattutto per il testing 
+#define TEST false // if test is true then we should not save new weight and use the old weight and also not back_prop because we already trained the nt 
 #define PRINT true  // if PRINT == true -> print the output layer after every FeedForward of the net
-#define SAVE true // if SAVE == true -> the weights are going to be saved in a new file
 // activation functions
 // for now -> than I can add other 
 #define ReLU 0
