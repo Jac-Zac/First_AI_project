@@ -14,8 +14,9 @@ public:
  
     // I don't really care about input weights since they are the output weight on the previous layer 
     void gen_output(int n, int& index); // this function generate the output weights and fill single_output_weights
-    void copy_output(int n, int& index, std::ifstream& previious_weights); // this function copy the output weights and fill single_output_weights
+    void copy_output(int n, int& index, std::ifstream& previous_weights); // this function copy the output weights and fill single_output_weights
     double gen_random(int& index);
+    double copy_weights(int& index , std::ifstream& previous_weights);
     void print_output_single_weights()const;
 	void save_weights(std::ofstream& saved_weights);
 
@@ -29,9 +30,9 @@ inline void Weights::gen_output(int n,int& index){
      }
 }
 
-inline void Weights::copy_output(int n,int& index, std::ifstream& previious_weights){
+inline void Weights::copy_output(int n,int& index, std::ifstream& previous_weights){
      for(int i = 0 ; i < n ; i++){
-        single_output_weights.emplace_back(gen_random(index)); // IMPORTANRT ** change gen_random with a new function that copy the weights 
+        single_output_weights.emplace_back(copy_weights(index,previous_weights)); // call the function tu copy the weights  
      }
 }
 
@@ -60,6 +61,18 @@ inline double Weights::gen_random(int& index){
 
 
     return distribution(generator); 
+}
+
+// instead of filling the layer with random weight the weight are cherry pick from the previous_weight
+inline double Weights::copy_weights(int& index, std::ifstream& previous_weights){
+// ********** TESTING 
+//
+//
+// 		std::cout<<"I will save the weights ! But for now I'm just a tester \n";
+// I think that maybe I shouldn't pass the previous weight still but only a cut down portion -> the cut should occur before 
+//
+// *****************
+return 9; // for now -> 9 is to now it has been filled 
 }
 
 inline void Weights::print_output_single_weights()const{

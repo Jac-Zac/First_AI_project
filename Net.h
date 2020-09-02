@@ -53,7 +53,7 @@ inline Net::Net(std::ifstream& previous_weights){
         
 		for(int j = 0 ; j < SIZE ; j++){  // SIZE is the size of the topology  
 				Layer l;
-				l.copy_layer(j,previous_weights);
+				l.copy_layer(j,previous_weights); // use this function to copy the weight from the file
 				DNN.push_back(l);
 		}
 
@@ -61,13 +61,12 @@ inline Net::Net(std::ifstream& previous_weights){
 
 		std::string word; 
 		
-		while(previous_weights.good()){
+		while(previous_weights.good()){  // if I'm not mistaking I put this to now if we reach the end of the file  
 				std::cout << word << " ";
 				previous_weights >> word;
 		}
 // ***************************************************
 
-   // deve chiamare una nuova funzione dentro Layer.h che serve a prendere i pesi da l' input_file 
 }
 
 

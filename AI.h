@@ -42,9 +42,12 @@ inline AI::AI(){
 
 	// chose the best action following the feed forward
 inline void AI::exploit(Net& net){
-	// devo ancora mondifcarla per fare sapere alla rete neurale se sto facendo un azione casuale perchè quelle che mi ha dato la rete neurale era pessima lui non stava suggerendo una buona mosssa  
 
-	//  we pass through the network
+      // IMPORTANT for later *************************
+	    	// devo ancora mondifcarla per fare sapere alla rete neurale se sto facendo un azione casuale perchè quelle che mi ha dato la rete neurale era pessima lui non stava suggerendo una buona mosssa  
+     // **********************************************
+	
+	 //  we pass through the network
 	net.Feedforward(state);
 
 	if(turn % 2 == 0){ // check the turn 
@@ -184,5 +187,9 @@ inline void AI::test_AI(){
 		std::ifstream previous_weights("Saved_Weights");
 		Net net(previous_weights);
 		previous_weights.close();
+		// spacing 
+		std::cout<<"\n";
+		// print the new net 	
+		net.print_Net();
 
 }
