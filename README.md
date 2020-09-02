@@ -42,12 +42,11 @@ The script compiles and run the program and then change the TEST variable. When 
 
 ### At what point am I ? 🔖
 
-<b>This is my list of GOALS for the foreseeable future <b>
+###### This is my list of GOALS for the foreseeable future
 
 1. I have to look trough the weights file and save them in the right place 
 2. I have to figure out how should I copy the network for the Value Net
 3. I have to code Back_Prop and than do rigorous testing to make sure it works
 4. ... ( There is no point in listing everyithing right now )
 
-<b>this project has just started recently<b>
 
