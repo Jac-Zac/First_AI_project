@@ -11,12 +11,16 @@
 
 class Weights{
 public:
-    std::vector<double> single_output_weights;
-    
+ 
+    // I don't really care about input weights since they are the output weight on the previous layer 
     void gen_output(int n, int& index); // this function generate the output weights and fill single_output_weights
+    void copy_output(int n, int& index, std::ifstream& previious_weights); // this function copy the output weights and fill single_output_weights
     double gen_random(int& index);
     void print_output_single_weights()const;
 	void save_weights(std::ofstream& saved_weights);
+
+    //  vector of weight in a single line 
+    std::vector<double> single_output_weights;
 };
 
 inline void Weights::gen_output(int n,int& index){
@@ -25,9 +29,16 @@ inline void Weights::gen_output(int n,int& index){
      }
 }
 
+inline void Weights::copy_output(int n,int& index, std::ifstream& previious_weights){
+     for(int i = 0 ; i < n ; i++){
+        single_output_weights.emplace_back(gen_random(index)); // IMPORTANRT ** change gen_random with a new function that copy the weights 
+     }
+}
+
+
 inline double Weights::gen_random(int& index){
   
-// normal distribution media = 0, diviation = 1
+// normal distribution media = 0, deviation = 1
 
     std::default_random_engine generator;
     
@@ -35,7 +46,7 @@ inline double Weights::gen_random(int& index){
 	
 	// He-Normal Initialization
    
-    // Initialization for ReLu (Xavier initialization)
+    // Initialization for ReLU (Xavier initialization)
     
     // index start at 0 which is what I want and go to SIZE - 1 
    

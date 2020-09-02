@@ -12,7 +12,7 @@
 
 class AI : public game {
 public:
-// ai class
+// AI class
 AI();
 	void step(Net& net);
 	void episode(Net& net);
@@ -35,7 +35,7 @@ protected:
 
 inline AI::AI(){
 	std::cout<<"\n";
-	std::cout<<"Ai trianing ... \n";
+	std::cout<<"AI training ... \n";
 }
 
 	// un idea può essere di avere una batch size di tipo 5 che viene processata in parallelo da mutlithreading però ricordati di cambiare alive in non static e anche state 
@@ -81,7 +81,7 @@ inline void AI::explore(){
 
 // inoltre doveri sviluppare dele reword 
 // da correggere 
-inline void AI::episode(Net& net){ // this should be an episode not an epoche
+inline void AI::episode(Net& net){ 
 	std::srand((unsigned)time(0));
 	while(won == false){
 		player = (turn % 2 == 0) ? 1 : 2;
@@ -122,10 +122,10 @@ inline bool AI::rand_exp(){
 inline void AI::step(Net& net){
     //funzione per giocare
     
-    // i have to check if move is allowed if the slot is != 0 move should be the next best Q_value
+    // I have to check if move is allowed if the slot is != 0 move should be the next best Q_value
     if(turn % 2 == 0){
-        // ai play
-        // action = max Q_value (da creare un array Q value per una rete neuraler)
+        // AI play
+        // action = max Q_value (da creare un array Q value per una rete neurale)
         // I have to check when to exploit
 
         // per adesso è un test ma bisonga ripararlo
@@ -134,10 +134,10 @@ inline void AI::step(Net& net){
 	    exploit(net);
 	}else explore();
         
-        // exploit se il numero random è maggiore della soglia 
+        // exploit if the number random number that I got is >= compared to the threshold 
         state[action_1] = 1;
     }else{
-        // i play for now than 2 ai will play
+        // I play for now than 2 AI will play
 
         exploit(net); // the second agent is always exploiting
 
@@ -166,8 +166,7 @@ inline void AI::check_won(){
 
 
 inline void AI::train_AI(){
-// this is just a test for now 
-    // I will use the global variable topology -> da_includere 
+    // this is just a test for now 
 
     Net net;
     episode(net);

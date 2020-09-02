@@ -14,23 +14,25 @@ class Net : public Layer
 {
 public:
     Net(); // constructor weights need to be initialized
+	Net(std::ifstream& previous_weights); // constructor weights are already created and saved in another file  
 
 #if TEST == false
 	~Net();
-#endif
-
-	Net(std::ifstream& previous_weights); // constructor weights are already created and saved in another file 
-
-  // devo creare un copy constructor per il primo tipo per creare un value net 
-
-    std::vector<Layer> DNN;
-    void Feedforward(std::array<int,N>& state);
-    // test feed forward and create back prop and see what you are missing 
-    // create error function
+#endif 
+	// my neural network is an array of Layer
+	std::vector<Layer> DNN;
     
-    void print_Net();
+	void Feedforward(std::array<int,N>& state);
+    
+// TO DO ******************
+	// test feed forward and create back prop and see what you are missing 
+    // create error function
+// 	     ******************
+    
+	void print_Net();
     
 protected:
+
     double activation_function(double neuron, int type);
 };
 
@@ -44,21 +46,27 @@ inline Net::Net()
      }
 }
 
-// testing this right now I have to implement it on other files 
-// posso usare le condizioni tipo save file in da_includere per mettere a posto nel file AI.h e main.h 
-
+// This function is useful to create a net with the same weights and architecture of another Net -> thus it it helpful for a Value net and for test purposes
 inline Net::Net(std::ifstream& previous_weights){
-  // questo constructor serve per qunado il modello ha gia fatto training e quindi posso inserire i pesi gia calcolati   
-		
-  // this is just to test
+  
+		// this is just a test form now 
+        
+		for(int j = 0 ; j < SIZE ; j++){  // SIZE is the size of the topology  
+				Layer l;
+				l.copy_layer(j,previous_weights);
+				DNN.push_back(l);
+		}
+
+// this is my little tutorial for how to read a file ***********
+
 		std::string word; 
+		
 		while(previous_weights.good()){
 				std::cout << word << " ";
 				previous_weights >> word;
 		}
+// ***************************************************
 
-
-  // end testing
    // deve chiamare una nuova funzione dentro Layer.h che serve a prendere i pesi da l' input_file 
 }
 
