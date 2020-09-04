@@ -7,6 +7,8 @@
 //
 #include "Weights.h"
 
+// ********************************************* DEFINITION **********************************************
+
 class Layer{
 public:
     std::vector<double> layer; // neurons in a layer 
@@ -19,6 +21,8 @@ public:
 	std::vector<Weights> output_weights; 
 };
 
+
+// ********************************************* IMPLEMENTATION **********************************************
 
 inline void Layer::create_layer(int& index){ // index is the layer that we are on
         // this is for output layers

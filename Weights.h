@@ -9,6 +9,8 @@
 #pragma once
 #include"da_includere.h"
 
+// ********************************************* DEFINITION **********************************************
+
 class Weights{
 public:
  
@@ -36,6 +38,7 @@ inline void Weights::copy_output(int n,int& index, std::ifstream& previous_weigh
      }
 }
 
+// ********************************************* IMPLEMENTATION **********************************************
 
 inline double Weights::gen_random(int& index){
   

@@ -46,6 +46,7 @@ The script compiles and run the program and then change the TEST variable. When 
 
 1. I have to look trough the weights file and save them in the right place 
 2. I have to figure out how should I copy the network for the Value Net
+2. I have to code a loss function -> the loss function has to be in term of the Bellman equation calculated with respect to the value network 
 3. I have to code Back_Prop and than do rigorous testing to make sure it works
 4. ... ( There is no point in listing everyithing right now )
 

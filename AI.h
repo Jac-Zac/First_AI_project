@@ -10,6 +10,8 @@
 #include "game.h"
 #include "Net.h"
 
+// ********************************************* DEFINITION **********************************************
+
 class AI : public game {
 public:
 // AI class
@@ -32,6 +34,9 @@ protected:
 	bool rand_exp(); // random number to test if I want to explore or exploit 
 	bool exploiting; // variable to see if it will exploit or explore 
 };
+
+
+// ********************************************* IMPLEMENTATION **********************************************
 
 inline AI::AI(){
 	std::cout<<"\n";

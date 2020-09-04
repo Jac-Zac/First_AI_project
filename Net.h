@@ -10,6 +10,9 @@
 #include "Layer.h"
 #include "game.h"
 
+
+// ********************************************* DEFINITION **********************************************
+
 class Net : public Layer
 {
 public:
@@ -35,6 +38,9 @@ protected:
 
     double activation_function(double neuron, int type);
 };
+
+
+// ********************************************* DEFINITION **********************************************
 
 // constructor to fill the net 
 inline Net::Net()
