@@ -28,11 +28,11 @@ public:
 	void Feedforward(std::array<int,N>& state);
     
 // TO DO ******************
-	// test feed forward and create back prop and see what you are missing 
     // create error function
+	// create back prop and see what you are missing 
 // 	     ******************
     
-	void print_Net();
+	void print_Net() const;
     
 protected:
 
@@ -128,7 +128,7 @@ inline void Net::Feedforward(std::array<int,N>& state){
 
 
 // function to print the net structure 
-inline void Net::print_Net(){
+inline void Net::print_Net() const {
     // print neuron structure
     for(int i = 0; i < DNN.size(); i++){ // for all the layer in a Network 
         std::cout<<"Layer number "<<i<<"\n"<<"--------------------\n";

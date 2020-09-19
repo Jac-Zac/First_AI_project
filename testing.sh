@@ -22,3 +22,5 @@ make
 sed -i '' "s/TEST true/TEST false/" da_includere.h
 
 # and you can decide to clean everything 
+
+make clean_weights
