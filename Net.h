@@ -52,7 +52,7 @@ inline Net::Net()
      }
 }
 
-// This function is useful to create a net with the same weights and architecture of another Net -> thus it it helpful for a Value net and for test purposes
+// This function is useful to create a net with the same weights and architecture of another Net -> thus it it helpful for for test purposes
 inline Net::Net(std::ifstream& previous_weights){
   
 		// this is just a test form now 

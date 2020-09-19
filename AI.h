@@ -177,6 +177,8 @@ inline void AI::train_AI(){
     // this is just a test for now 
 
     Net net;
+
+	// Now we should also create a target network which is helpful to calculate a Loss function 
     episode(net);
     
     for(size_t i = 0 ; i < batch_size ; i++ ){
