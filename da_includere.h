@@ -34,4 +34,4 @@
 
 // topology of the network -> this can change I think I will try with {N,12,15,12,N}
 #define SIZE 3 // SIZE -> this is the size of the topology
-std::array<int,SIZE> topology = {N,12,N}; // for now the number is arbitrary an really low for testing purposes 
+std::array<int,SIZE> topology = {N,3,N}; // for now the number is arbitrary an really low for testing purposes 

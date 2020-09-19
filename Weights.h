@@ -17,7 +17,6 @@ public:
     // I don't really care about input weights since they are the output weight on the previous layer 
     void gen_output(int n, int& index); // this function generate the output weights and fill single_output_weights
     void copy_output(int n, int& index, std::ifstream& previous_weights); // this function copy the output weights and fill single_output_weights
-    double copy_weights(int& index , std::ifstream& previous_weights);
     void print_output_single_weights()const;
 	void save_weights(std::ofstream& saved_weights);
 
@@ -26,6 +25,7 @@ public:
 
 private:
     double gen_random(int& index);
+    double copy_weights(int& index , std::ifstream& previous_weights);
 
 };
 
@@ -72,9 +72,21 @@ inline double Weights::gen_random(int& index){
 // instead of filling the layer with random weight the weight are cherry pick from the previous_weight
 inline double Weights::copy_weights(int& index, std::ifstream& previous_weights){
 // ********** TESTING 
+    float w; // w is a sing weight 
+
+// IDEA 
+// un idea può essere di leggere i pesi scendendo una linea alla volta ATTENZIONE PERO BISOGNA SALAVARLI NEL POSTO NELLE VARIABILI GIUSTE DOPO TENEDO ANCHE CONTO DELL INDEX 
+	
+//     while(previous_weights.good()){ // I have to loop through as enough time base on the layer  
+//		std::getline(previous_weights, w, ' '); // use ' ' as separator, default is '\n' (newline). Now the first number is saved in w.
+	previous_weights >> w; 
+	std::cout << w << " ";
+	// 	previous_weights >> word;
+  //   }
+// *************************	
 //
 //
-// 		std::cout<<"I will save the weights ! But for now I'm just a tester \n";
+// std::cout<<"I will save the weights ! But for now I'm just a tester \n";
 // I think that maybe I shouldn't pass the previous weight still but only a cut down portion -> the cut should occur before 
 //
 // *****************
@@ -92,8 +104,10 @@ inline void Weights::print_output_single_weights()const{
 inline void Weights::save_weights(std::ofstream& saved_weights){
 
     for(auto& it : single_output_weights){
-		saved_weights << it << " ";
+		saved_weights << it << "\n";
 	}
 
 	saved_weights<<"\n";
 }
+
+

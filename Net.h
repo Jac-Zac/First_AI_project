@@ -63,14 +63,6 @@ inline Net::Net(std::ifstream& previous_weights){
 				DNN.push_back(l);
 		}
 
-// this is my little tutorial for how to read a file ***********
-
-		std::string word; 
-		
-		while(previous_weights.good()){  // if I'm not mistaking I put this to now if we reach the end of the file  
-				std::cout << word << " ";
-				previous_weights >> word;
-		}
 // ***************************************************
 
 }
@@ -87,8 +79,6 @@ inline double Net::activation_function(double neuron, int type){
 
 
 inline void Net::Feedforward(std::array<int,N>& state){
-    // I have to test it and add comments 
-    //
     //implementation of Feedforward
     
     // fill the neurons of the first layer, I think I have to pass all of this trough an activation function to
@@ -99,11 +89,10 @@ inline void Net::Feedforward(std::array<int,N>& state){
     for(size_t j = 0 ; j < DNN.size() - 1; j++){
         // loop trough layers
         for(size_t k = 0 ; k < topology[j + 1] ; k++){  // loop trough the neurons in the new layer 
-            // as a test
             for(size_t i = 0; i < topology[j]; i++){
                 DNN[j + 1].layer[k] += DNN[j].layer[i]*DNN[j].output_weights[i].single_output_weights[k];
             }
-            // this is just as a test 
+            // apply the activation fusion
             DNN[j + 1].layer[k] = activation_function(DNN[j + 1].layer[k],ReLU); // activation function 
         }
     }
