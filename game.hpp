@@ -1,5 +1,5 @@
 //
-//  game.h
+//  game.hpp
 //  AI_Tria 2.0
 //
 //  Created by Jacopo Zacchigna on 02/05/2020.

@@ -7,7 +7,7 @@
 //
 
 // I will see at the end which class should be included here
-#include "AI.h"
+#include "AI.hpp"
 
 // forse dovrei mettere la topologia da dentro da_includere
 

@@ -1,5 +1,5 @@
 //
-//  Net.h
+//  Net.hpp
 //  AI_Tria 2.0
 //
 //  Created by Jacopo Zacchigna on 16/05/2020.
@@ -7,8 +7,8 @@
 //
 
 #pragma once
-#include "Layer.h"
-#include "game.h"
+#include "Layer.hpp"
+#include "game.hpp"
 
 
 // ********************************************* DEFINITION **********************************************

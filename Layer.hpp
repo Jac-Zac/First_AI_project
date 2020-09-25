@@ -1,11 +1,11 @@
 //
-//  Layer.h
+//  Layer.hpp
 //  AI_Tria 2.0
 //
 //  Created by Jacopo Zacchigna on 16/05/2020.
 //  Copyright © 2020 Jacopo Zacchigna. All rights reserved.
 //
-#include "Weights.h"
+#include "Weights.hpp"
 
 // ********************************************* DEFINITION **********************************************
 

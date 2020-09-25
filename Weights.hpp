@@ -1,5 +1,5 @@
 //
-//  Weights.h
+//  Weights.hpp
 //  AI_Tria 2.0
 //
 //  Created by Jacopo Zacchigna on 24/05/2020.
