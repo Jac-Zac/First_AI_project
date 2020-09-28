@@ -44,11 +44,11 @@ inline void Layer::copy_layer(int& index, std::ifstream& previous_weights){ // i
 		
         // this is for output layers
         
-        for(int j = 0; j < topology[index]; j++){
-            Weights o_w; // input weights
-            o_w.copy_output(topology[index + 1],index, previous_weights); // since we want the input weight we need to pass the number of neurones of the layer after
-            output_weights.emplace_back(o_w);
-        }
+    for(int j = 0; j < topology[index]; j++){
+         Weights o_w; // input weights
+		 o_w.copy_output(topology[index + 1],index, previous_weights); // since we want the input weight we need to pass the number of neurones of the layer after
+         output_weights.emplace_back(o_w);
+    }
 
     // for all layers
     for(int k = 0; k < topology[index] ; k++ ){

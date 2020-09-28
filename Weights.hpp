@@ -74,6 +74,8 @@ inline double Weights::copy_weights(int& index, std::ifstream& previous_weights)
 // ********** TESTING 
     float w; // w is a sing weight 
 
+// INVECE DI USARE QUESTA FUNZIONE POSSO ACCEDERCI DIRETTAMENTE DA LAYER.HPP FILE NELLA FUNZIONE COPY LAYER PENSO ! DA PROVARE
+
 // IDEA 
 // un idea può essere di leggere i pesi scendendo una linea alla volta ATTENZIONE PERO BISOGNA SALAVARLI NEL POSTO NELLE VARIABILI GIUSTE DOPO TENEDO ANCHE CONTO DELL INDEX 
 	
