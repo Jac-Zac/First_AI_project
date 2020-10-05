@@ -46,8 +46,22 @@ inline void Layer::copy_layer(int& index, std::ifstream& previous_weights){ // i
         
     for(int j = 0; j < topology[index]; j++){
          Weights o_w; // input weights
-		 o_w.copy_output(topology[index + 1],index, previous_weights); // since we want the input weight we need to pass the number of neurones of the layer after
-         output_weights.emplace_back(o_w);
+		 // I think this is not needed
+		// 		 o_w.copy_output(topology[index + 1],index, previous_weights); // since we want the input weight we need to pass the number of neurones of the layer after
+
+		// loop thought the line (It should be based on the number of neuron for the layer )and then create a stream from the line and copy the weights 
+		//  you than do not need the copy_output function
+		//  for(size_t j = 0 ; j < TOPOLOGY[index + 1]; j++ ]) // loop thought at the weights 
+		 // for(size_t i = 0 ; i < $TOPOLIGY[index]; i++)[{std::istringstream in($line);}
+		 
+		 int s = 1; // testing 
+
+		// this is to fill the network 
+		 for(size_t i = 0; i < topology[index + 1]; i++){
+			o_w.single_output_weights.emplace_back(s); // this is for testing I have to change it with std::istringstream 
+			s++;
+		 }
+		 output_weights.emplace_back(o_w);
     }
 
     // for all layers

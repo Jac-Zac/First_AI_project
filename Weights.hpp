@@ -16,7 +16,6 @@ public:
  
     // I don't really care about input weights since they are the output weight on the previous layer 
     void gen_output(int n, int& index); // this function generate the output weights and fill single_output_weights
-    void copy_output(int n, int& index, std::ifstream& previous_weights); // this function copy the output weights and fill single_output_weights
     void print_output_single_weights()const;
 	void save_weights(std::ofstream& saved_weights);
 
@@ -32,12 +31,6 @@ private:
 inline void Weights::gen_output(int n,int& index){
      for(int i = 0 ; i < n ; i++){
         single_output_weights.emplace_back(gen_random(index));
-     }
-}
-
-inline void Weights::copy_output(int n,int& index, std::ifstream& previous_weights){
-     for(int i = 0 ; i < n ; i++){
-        single_output_weights.emplace_back(copy_weights(index,previous_weights)); // call the function tu copy the weights  
      }
 }
 
@@ -111,5 +104,3 @@ inline void Weights::save_weights(std::ofstream& saved_weights){
 
 	saved_weights<<"\n";
 }
-
-
