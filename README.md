@@ -45,8 +45,8 @@ The script compiles and run the program and then change the TEST variable. When 
 ###### This is my list of GOALS for the foreseeable future
 
 1. I have to look trough the weights file and save them in the right place 
-2. I have to figure out how should I copy the network for the Target Net
-3. I have to create a new for back_prop and the loss funciton !
+2. I have to Create a new file to calculate the loss with MSE
+3. I have to create a new file for back_prop and the loss funciton !
 4. I have to code a loss function -> the loss function has to be in term of the Bellman equation calculated with respect to the value network 
 5. I have to code Back_Prop and than do rigorous testing to make sure it works
 6. ... ( There is no point in listing everyithing right now )

@@ -13,8 +13,8 @@
 
 // ********************************************* DEFINITION **********************************************
 
-class Net : public Layer
-{
+class Net : public Layer{
+
 public:
     Net(); // constructor weights need to be initialized
 	Net(std::ifstream& previous_weights); // constructor weights are already created and saved in another file  

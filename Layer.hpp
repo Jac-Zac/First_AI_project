@@ -84,5 +84,5 @@ inline void Layer::save_matrix(int& index, std::ofstream& saved_weights){
     for(int j = 0; j < topology[index]; j++){
         output_weights[j].save_weights(saved_weights);
     }
-	saved_weights << "\n";
+	std::cout<<"\n";
 }
