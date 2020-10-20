@@ -9,8 +9,6 @@
 // I will see at the end which class should be included here
 #include "AI.hpp"
 
-// forse dovrei mettere la topologia da dentro da_includere
-
 int main(int argc, const char * argv[]) {
 AI obj;
 #if TEST == false 
@@ -22,18 +20,13 @@ obj.test_AI();
 #endif 
 }
 
-// appunti
-// craa una funzione per il training the chiami epoche il multithread e lo puo fare con 2 4 8 16 questo lo fai a compile tie m:wq
 
+// when I have time I have to code back pro and test it rigorously  
+// and also unite everything together
 
-// Xievier (o come si chiama ) inizialization weights I have to do this  
+// To do for the future 
 
-// c'è tempo 
-// poi sviluppiamo back prop
-// testare back prop
+// create a replay buffer class and the related components 
+// create a multi-threaded function to call epoch with replay buffers with perhaps a large batch size but I have pay attention to the alive variable 
 
-// questo e da vedere dopo 
-// devo cercare di unire il tutto in modo che funzioni 
-// a questo punto crea una classe per il repaly buffe per miglorarlo,e aggiungi ancche il secondo gioco
-
-// posso provare a implementare versioni diverse di tria come notakto
+// when you will have finished try to implement it for different tic tac toe rules like the game NOTAKTO 

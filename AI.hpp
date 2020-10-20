@@ -43,8 +43,6 @@ inline AI::AI(){
 	std::cout<<"AI training ... \n";
 }
 
-	// un idea può essere di avere una batch size di tipo 5 che viene processata in parallelo da mutlithreading però ricordati di cambiare alive in non static e anche state 
-
 	// chose the best action following the feed forward
 inline void AI::exploit(Net& net){
 
@@ -128,8 +126,8 @@ inline bool AI::rand_exp(){
 
 // this should not be an episode but is just 1 step 
 inline void AI::step(Net& net){
-    //funzione per giocare
-    
+    // this if the function that allows the AI to play fallowing various rules 
+   
     // I have to check if move is allowed if the slot is != 0 move should be the next best Q_value
     if(turn % 2 == 0){
         // AI play

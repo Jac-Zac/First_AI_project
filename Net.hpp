@@ -59,6 +59,19 @@ inline Net::Net(std::ifstream& previous_weights){
 
 
   // Loop throughout the whole file and create an vector of float and then get values from that vector to fill the network's weighs
+  // I have to change this part to instead of be filled with 9 be filled with the saved weights 
+  
+	// TESTING ***********************
+
+// for(std::string line, std::getline(previous_weights, line);) // read stream line by line 
+// 	std::istringstream in(line);      //make a stream for the line itself
+// 	float x;
+//     in >> x ; 
+// }
+
+
+	// END TESTING ***********************
+
 	for(size_t i = 0 ; i < count(SIZE - 1) ; i++){ // loop based on the number of weights we have 
 		saved.emplace_back(9);  // the complete number of neurons 
 	}
