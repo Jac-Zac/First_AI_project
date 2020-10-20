@@ -34,8 +34,10 @@ public:
     
 	void print_Net() const;
     
-protected:
+public: 
+	std::vector<float> saved; // this is a vector that allow us to store the saved weights
 
+protected:
     double activation_function(double neuron, int type);
 };
 
@@ -54,19 +56,21 @@ inline Net::Net()
 
 // This function is useful to create a net with the same weights and architecture of another Net -> thus it it helpful for for test purposes
 inline Net::Net(std::ifstream& previous_weights){
-  
-		// this is just a test form now 
-        
-		for(int j = 0 ; j < SIZE ; j++){  // SIZE is the size of the topology  
-				Layer l;
-				l.copy_layer(j,previous_weights); // use this function to copy the weight from the file
-				DNN.push_back(l);
-		}
+
+
+  // Loop throughout the whole file and create an vector of float and then get values from that vector to fill the network's weighs
+	for(size_t i = 0 ; i < count(SIZE - 1) ; i++){ // loop based on the number of weights we have 
+		saved.emplace_back(9);  // the complete number of neurons 
+	}
+
+	for(int j = 0 ; j < SIZE ; j++){  // SIZE is the size of the topology  
+		Layer l;
+		l.copy_layer(j,saved); // use this function to copy the weight from the file
+		DNN.push_back(l);
+	}
 
 // ***************************************************
-
 }
-
 
 inline double Net::activation_function(double neuron, int type){
    if(type == Tanh) return tanh(neuron);

@@ -12,13 +12,13 @@
 // forse dovrei mettere la topologia da dentro da_includere
 
 int main(int argc, const char * argv[]) {
-	AI obj;
+AI obj;
 #if TEST == false 
-	// train 
-	obj.train_AI();    
+// // train 
+obj.train_AI();    
 #else
-    // test 
-	obj.test_AI();
+// // test 
+obj.test_AI();
 #endif 
 }
 
