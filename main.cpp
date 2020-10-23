@@ -10,13 +10,13 @@
 #include "AI.hpp"
 
 int main(int argc, const char * argv[]) {
-AI obj;
+	AI obj;
 #if TEST == false 
-// // train 
-obj.train_AI();    
+	// train 
+	obj.train_AI();    
 #else
-// // test 
-obj.test_AI();
+	// test 
+	obj.test_AI();
 #endif 
 }
 

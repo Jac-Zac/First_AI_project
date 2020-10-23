@@ -13,15 +13,13 @@ class Layer{
 public:
     std::vector<double> layer; // neurons in a layer 
     void create_layer(int& index); // we have to pass the topology this create the layer and the weights 
-	void copy_layer(int& inedx, std::vector<float>& save); // this is useful tu create a layer form existing weights 
+	void copy_layer(int& inedx, std::array<float,WEIGTHS_COUNT>& save); // this is useful tu create a layer form existing weights 
 
     void print_output_matrix(int& index)const; // print matrix of the output weight 
 	void save_matrix(int& index, std::ofstream& saved_weights);
 
 	std::vector<Weights> output_weights;  
 	std::vector<float> saved; // this is a vector that allow us to store the saved weights 
-protected: 
-	int count(int i); // this function count the number of weights for a at any point that we have passed (doesn't check for index out of bound)
 };
 
 
@@ -42,15 +40,7 @@ inline void Layer::create_layer(int& index){ // index is the layer that we are o
     }
 }
 
-int Layer::count(int i){ // implementation
-	int sum = 0;
-		for( ; i > 0 ; i--){
-			sum = sum + (topology[i] * topology[i - 1]);
-		}
-	return sum;
-}
-
-inline void Layer::copy_layer(int& index, std::vector<float>& saved){ // index is the layer that we are on
+inline void Layer::copy_layer(int& index, std::array<float,WEIGTHS_COUNT>& saved){ // index is the layer that we are on
 	// TESTING **********************
 		
     // this is for output layers weights 
