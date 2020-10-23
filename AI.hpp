@@ -173,15 +173,15 @@ inline void AI::check_won(){
 
 inline void AI::train_AI(){
     // this is just a test for now 
-
-    Net net;
-	Net value_net = net;
-
-	// Now we should also create a target network which is helpful to calculate a Loss function 
+    
+	Net net;
+ 	Net value_net = net;
+	
+// Now we should also create a target network which is helpful to calculate a Loss function 
     episode(net);
     
     for(size_t i = 0 ; i < batch_size ; i++ ){
-        net.Feedforward(state);
+		net.Feedforward(state);
     }
     
     net.print_Net();

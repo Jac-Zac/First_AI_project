@@ -35,7 +35,7 @@ public:
 	void print_Net() const;
     
 public: 
-	std::array<float,WEIGTHS_COUNT> saved; // this is a vector that allow us to store the saved weights
+	std::array<float,TOTAL_W> saved; // this is a vector that allow us to store the saved weights
 
 protected:
     double activation_function(double neuron, int type);
@@ -46,8 +46,8 @@ protected:
 
 // constructor to fill the net 
 inline Net::Net()
-{
-    for(int j = 0 ; j < SIZE ; j++){  // SIZE is the size of the topology  
+{ 
+    for(int j = 0 ; j < SIZE; j++){  // SIZE is the size of the topology
         Layer l;
         l.create_layer(j);
         DNN.push_back(l);
@@ -72,7 +72,7 @@ inline Net::Net(std::ifstream& previous_weights){
 
 	// END TESTING ***********************
 
-	for(size_t i = 0 ; i < count(SIZE - 1) ; i++){ // loop based on the number of weights we have 
+	for(size_t i = 0 ; i < TOTAL_W ; i++){ // loop based on the number of weights we have 
 		saved[i] = 9;  // the complete number of neurons 
 	}
 

@@ -10,12 +10,15 @@
 #include "AI.hpp"
 
 int main(int argc, const char * argv[]) {
+	// int z = 2;
+	// for(size_t i = 0 ; i < 2*topology[z + 1 ] ; i++){
+	// std::cout<<"topology : "<<i<<"\n";} 
 	AI obj;
 #if TEST == false 
-	// train 
+   // train 
 	obj.train_AI();    
 #else
-	// test 
+   // test 
 	obj.test_AI();
 #endif 
 }

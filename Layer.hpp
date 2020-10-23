@@ -12,8 +12,8 @@
 class Layer{
 public:
     std::vector<double> layer; // neurons in a layer 
-    void create_layer(int& index); // we have to pass the topology this create the layer and the weights 
-	void copy_layer(int& inedx, std::array<float,WEIGTHS_COUNT>& save); // this is useful tu create a layer form existing weights 
+	void create_layer(int& index); // we have to pass the topology this create the layer and the weights 
+	void copy_layer(int& inedx, std::array<float,TOTAL_W>& save); // this is useful tu create a layer form existing weights 
 
     void print_output_matrix(int& index)const; // print matrix of the output weight 
 	void save_matrix(int& index, std::ofstream& saved_weights);
@@ -25,13 +25,15 @@ public:
 
 // ********************************************* IMPLEMENTATION **********************************************
 
+
 inline void Layer::create_layer(int& index){ // index is the layer that we are on
         // this is for output layers
-        
-        for(int j = 0; j < topology[index]; j++){
-            Weights o_w; // input weights
-            o_w.gen_output(topology[index + 1],index); // since we want the input weight we need to pass the number of neurones of the layer after
-            output_weights.emplace_back(o_w);
+		for(int j = 0; j < topology[index]; j++){ // if I didn't do the check I would go out of bound and I can't do that 
+			if(index < SIZE - 1 ){
+				Weights o_w; // input weights
+				o_w.gen_output(topology[index + 1],index); // since we want the input weight we need to pass the number of neurones of the layer after
+				output_weights.emplace_back(o_w);
+			}
         }
 
     // for all layers
@@ -40,7 +42,7 @@ inline void Layer::create_layer(int& index){ // index is the layer that we are o
     }
 }
 
-inline void Layer::copy_layer(int& index, std::array<float,WEIGTHS_COUNT>& saved){ // index is the layer that we are on
+inline void Layer::copy_layer(int& index, std::array<float,TOTAL_W>& saved){ // index is the layer that we are on
 	// TESTING **********************
 		
     // this is for output layers weights 
@@ -64,8 +66,10 @@ inline void Layer::copy_layer(int& index, std::array<float,WEIGTHS_COUNT>& saved
 				o_w.single_output_weights.emplace_back(saved[i]); 
 			}
 		}else{
-			for(size_t j = topology[index + 1] ; j < 2*topology[index + 1] ; j++){ // I start from topology[index + 1 ] because I want to be sure that that if I'm reading from the vector I'm not starting from the first place 
-				o_w.single_output_weights.emplace_back(3);  // this is for testing
+			if(index < SIZE -1){  // I have to check because if I am at the last layer I can't do topology at index + 1 and it wouldn't even make sens so I have to check the It stops before 
+				for(size_t j = topology[index + 1] ; j < 2*topology[index + 1] ; j++){ // I start from topology[index + 1 ] because I want to be sure that that if I'm reading from the vector I'm not starting from the first place 
+					o_w.single_output_weights.emplace_back(3);  // this is for testing
+				}
 			}
 		}
 	

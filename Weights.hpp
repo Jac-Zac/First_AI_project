@@ -65,7 +65,7 @@ inline void Weights::print_output_single_weights()const{
 	for(auto& it : single_output_weights){
 		std::cout<<it<<" ";
 	}
-	std::cout<<"\n";
+ 	std::cout<<"\n";
 }
 
 // function to save the weights in a file 

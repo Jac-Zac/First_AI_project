@@ -19,7 +19,7 @@
 
 // topology of the network -> this can change I think I will try with {N,12,15,12,N}
 #define SIZE 3 // SIZE -> this is the size of the topology
-constexpr std::array<int,SIZE> topology = {N,3,N}; // for now the number is arbitrary an really low for testing purposes 
+constexpr std::array<const size_t,SIZE> topology = {N,3,N}; // for now the number is arbitrary an really low for testing purposes 
 
 constexpr int count(int i){ // this function count the number of weights for a at any point that we have passed (doesn't check for index out of bound)
 	int sum = 0;
@@ -27,7 +27,5 @@ constexpr int count(int i){ // this function count the number of weights for a a
     return sum;
 }
 
-#define TOTAL_W count(SIZE - 1 ) // total wights 
-
-
+#define TOTAL_W count(SIZE - 1) // total wights 
 
