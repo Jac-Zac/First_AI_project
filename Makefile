@@ -13,7 +13,7 @@ BIN=output
 
 all: $(BIN)
 
-$(BIN): $(OBJS) da_includere.h $(HDRS)
+$(BIN): $(OBJS) $(HDRS)
 	$(CXX) $(OBJS) -o $(BIN) -pthread  
 	@echo "Linked everything together"
 # Clean only the .o files 
