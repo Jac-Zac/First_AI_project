@@ -68,6 +68,12 @@ inline Net::Net(std::ifstream& previous_weights){
 // 	float x;
 //     in >> x ; 
 // }
+	// THIS IS A TEST !!!!!
+	if (previous_weights.good()){
+		std::string sLine;
+		std::getline(previous_weights, sLine);
+		std::cout << sLine << "\n";
+	}
 
 
 	// END TESTING ***********************
@@ -103,7 +109,7 @@ inline void Net::Feedforward(std::array<int,N>& state){
        DNN[0].layer[i] = state[i]; // fill all the input neuron with the state that was passed in
     }
     
-    for(size_t j = 0 ; j < DNN.size() - 1; j++){
+    for(size_t j = 0 ; j < SIZE - 1; j++){
         // loop trough layers
         for(size_t k = 0 ; k < topology[j + 1] ; k++){  // loop trough the neurons in the new layer 
             for(size_t i = 0; i < topology[j]; i++){
@@ -124,7 +130,7 @@ inline void Net::Feedforward(std::array<int,N>& state){
 
     // after every Feedforward all neuron should be -> 0
     // the one in the first layer are not a problem 
-    for(size_t j = 0 ; j < DNN.size() - 1; j++){
+    for(size_t j = 0 ; j < SIZE - 1; j++){
         // loop trough layers
         for(size_t k = 0 ; k < topology[j + 1] ; k++){  // loop trough the neurons in the new layer 
             DNN[j + 1].layer[k] = 0.0 ;
@@ -136,7 +142,7 @@ inline void Net::Feedforward(std::array<int,N>& state){
 // function to print the net structure 
 inline void Net::print_Net() const {
     // print neuron structure
-    for(size_t i = 0; i < DNN.size(); i++){ // for all the layer in a Network 
+    for(size_t i = 0; i < SIZE; i++){ // for all the layer in a Network 
         std::cout<<"Layer number "<<i<<"\n"<<"--------------------\n";
         for(size_t j = 0; j < DNN[i].layer.size() ; j++){ // for all the neuron in a layer
             std::cout<<"Neuron number "<<j<<" = "<<DNN[i].layer[j]<<"\n";
@@ -145,8 +151,8 @@ inline void Net::print_Net() const {
     }
 
     // print matrix of weights
-    for(size_t i = 0; i < DNN.size(); i++){
-        if(i != (DNN.size() - 1)){
+    for(size_t i = 0; i < SIZE; i++){
+        if(i != (SIZE - 1)){
             std::cout<<"Print output weights Layer "<<i<<"\n"<<"----------------------------------\n"<<"\n";
             DNN[i].print_output_matrix(i);
             std::cout<<"\n";
@@ -160,8 +166,8 @@ inline Net::~Net(){
 	std::ofstream saved_weights;
 	saved_weights.open ("Saved_Weights");
 
-	for(size_t i = 0; i < DNN.size(); i++){
-		if(i != (DNN.size() - 1)){
+	for(size_t i = 0; i < SIZE; i++){
+		if(i != (SIZE - 1)){
 			DNN[i].save_matrix(i,saved_weights);
         }
     }

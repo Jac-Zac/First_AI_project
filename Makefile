@@ -15,7 +15,6 @@ output: $(OBJECTS) da_includere.h game.hpp AI.hpp Weights.hpp Layer.hpp Net.hpp 
 	@echo "Linked everything together"
 main.o: main.cpp
 	$(CXX) $(CXXFLAGS) main.cpp
-	@echo "Compiling main file"
 # Clean only the .o files 
 clean:
 	$(OBJDEL)

@@ -2,36 +2,31 @@
 
 # this script start by compiling 
 time make 
-echo "Make time *************************************************"
-echo ""
 
 # then it run the algorithm and it let it train and save the weight 
+echo $'\nRun the executable and time it *************************************************\n'
 time ./outupt.out
+echo 
 
-# clean the rest 
+# clean the rest
+echo $'Clean all *************************************************\n'
 make clean_all
-echo "Clean all *************************************************"
-echo ""
-echo ""
 
 # then change the value of TEST to true  
 sed -i '' "s/TEST false/TEST true/" topology.hpp 
 
 # then make again 
+echo $'\nMake for the second time *************************************************\n'
 make 
-echo "Make for the second time *************************************************"
-echo ""
 
 # then ./output.out 
+echo $'\nRun the executable and time it *************************************************\n'
 time ./outupt.out
-echo "Run the executable and time it *************************************************"
-echo ""
+echo 
 
 # then change TEST back to false 
 sed -i '' "s/TEST true/TEST false/" topology.hpp
 
 # and you can decide to clean everything
-echo ""
-echo "Cleaning everything *************************************************"
-echo ""
+echo $'Cleaning everything *************************************************\n'
 make clean_all_weights
