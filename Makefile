@@ -1,9 +1,27 @@
-# O3 serve per ottimizzare, la differenza è notevole
-output.o: main.o da_includere.h game.hpp AI.hpp Weights.hpp Layer.hpp Net.hpp topology.hpp
-	g++ main.o -o output -pthread  
+# The compiler to use for the compilation  
+CXX = g++
+# The c++ flags to use for compilation
+CXXFLAGS = -c -Wall -Wextra -O3 -std=gnu++17
+# Object files 
+OBJECTS = main.o 
+# Object file deletions rm -f *.o 
+OBJDEL = rm -f *.o
+# Executable file 
+EXEC = outupt.out
+
+all: output
+output: $(OBJECTS) da_includere.h game.hpp AI.hpp Weights.hpp Layer.hpp Net.hpp topology.hpp
+	$(CXX) $(OBJECTS) -o $(EXEC) -pthread  
+	@echo "Linked everything together"
 main.o: main.cpp
-	g++ -c -O3 -std=gnu++17 main.cpp
+	$(CXX) $(CXXFLAGS) main.cpp
+	@echo "Compiling main file"
+# Clean only the .o files 
 clean:
-	rm -rf *.o output	
-clean_weights:
-	rm -rf *.o output Saved_Weights	
+	$(OBJDEL)
+# Also delete the executable 
+clean_all:
+	$(OBJDEL) $(EXEC)
+# Delete also the Saved_Weights of the network 
+clean_all_weights:
+	$(OBJDEL) $(EXEC) Saved_Weights

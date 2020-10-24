@@ -44,6 +44,8 @@ The script compiles and run the program and then change the TEST variable. When 
 
 ###### This is my list of GOALS for the foreseeable future
 
+**You have to better the testing.sh file to many repetitions of echo and new line character**
+
 0. Make topology a constexpr without errors 
 1. I have to save the weights in a vector in the correct way, I have started to do that in Net.h in the other constructor 
 2. I have to code a loss function -> the loss function has to be in term of the Bellman equation calculated with respect to the value network 

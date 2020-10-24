@@ -47,7 +47,7 @@ protected:
 // constructor to fill the net 
 inline Net::Net()
 { 
-    for(int j = 0 ; j < SIZE; j++){  // SIZE is the size of the topology
+    for(size_t j = 0 ; j < SIZE; j++){  // SIZE is the size of the topology
         Layer l;
         l.create_layer(j);
         DNN.push_back(l);
@@ -76,7 +76,7 @@ inline Net::Net(std::ifstream& previous_weights){
 		saved[i] = 9;  // the complete number of neurons 
 	}
 
-	for(int j = 0 ; j < SIZE ; j++){  // SIZE is the size of the topology  
+	for(size_t j = 0 ; j < SIZE ; j++){  // SIZE is the size of the topology  
 		Layer l;
 		l.copy_layer(j,saved); // use this function to copy the weight from the file
 		DNN.push_back(l);
@@ -136,7 +136,7 @@ inline void Net::Feedforward(std::array<int,N>& state){
 // function to print the net structure 
 inline void Net::print_Net() const {
     // print neuron structure
-    for(int i = 0; i < DNN.size(); i++){ // for all the layer in a Network 
+    for(size_t i = 0; i < DNN.size(); i++){ // for all the layer in a Network 
         std::cout<<"Layer number "<<i<<"\n"<<"--------------------\n";
         for(size_t j = 0; j < DNN[i].layer.size() ; j++){ // for all the neuron in a layer
             std::cout<<"Neuron number "<<j<<" = "<<DNN[i].layer[j]<<"\n";
@@ -145,7 +145,7 @@ inline void Net::print_Net() const {
     }
 
     // print matrix of weights
-    for(int i = 0; i < DNN.size(); i++){
+    for(size_t i = 0; i < DNN.size(); i++){
         if(i != (DNN.size() - 1)){
             std::cout<<"Print output weights Layer "<<i<<"\n"<<"----------------------------------\n"<<"\n";
             DNN[i].print_output_matrix(i);
@@ -160,7 +160,7 @@ inline Net::~Net(){
 	std::ofstream saved_weights;
 	saved_weights.open ("Saved_Weights");
 
-	for(int i = 0; i < DNN.size(); i++){
+	for(size_t i = 0; i < DNN.size(); i++){
 		if(i != (DNN.size() - 1)){
 			DNN[i].save_matrix(i,saved_weights);
         }

@@ -9,10 +9,8 @@
 // I will see at the end which class should be included here
 #include "AI.hpp"
 
-int main(int argc, const char * argv[]) {
-	// int z = 2;
-	// for(size_t i = 0 ; i < 2*topology[z + 1 ] ; i++){
-	// std::cout<<"topology : "<<i<<"\n";} 
+// int main(int argc, const char * argv[]) { // maybe I will need it in the future 
+int main(){
 	AI obj;
 #if TEST == false 
    // train 

@@ -12,11 +12,11 @@
 class Layer{
 public:
     std::vector<double> layer; // neurons in a layer 
-	void create_layer(int& index); // we have to pass the topology this create the layer and the weights 
-	void copy_layer(int& inedx, std::array<float,TOTAL_W>& save); // this is useful tu create a layer form existing weights 
+	void create_layer(size_t& index); // we have to pass the topology this create the layer and the weights 
+	void copy_layer(size_t& inedx, std::array<float,TOTAL_W>& save); // this is useful tu create a layer form existing weights 
 
-    void print_output_matrix(int& index)const; // print matrix of the output weight 
-	void save_matrix(int& index, std::ofstream& saved_weights);
+    void print_output_matrix(size_t& index)const; // print matrix of the output weight 
+	void save_matrix(size_t& index, std::ofstream& saved_weights);
 
 	std::vector<Weights> output_weights;  
 	std::vector<float> saved; // this is a vector that allow us to store the saved weights 
@@ -26,9 +26,9 @@ public:
 // ********************************************* IMPLEMENTATION **********************************************
 
 
-inline void Layer::create_layer(int& index){ // index is the layer that we are on
+inline void Layer::create_layer(size_t& index){ // index is the layer that we are on
         // this is for output layers
-		for(int j = 0; j < topology[index]; j++){ // if I didn't do the check I would go out of bound and I can't do that 
+		for(size_t j = 0; j < topology[index]; j++){ // if I didn't do the check I would go out of bound and I can't do that 
 			if(index < SIZE - 1 ){
 				Weights o_w; // input weights
 				o_w.gen_output(topology[index + 1],index); // since we want the input weight we need to pass the number of neurones of the layer after
@@ -37,17 +37,17 @@ inline void Layer::create_layer(int& index){ // index is the layer that we are o
         }
 
     // for all layers
-    for(int k = 0; k < topology[index] ; k++ ){
+    for(size_t k = 0; k < topology[index] ; k++ ){
         layer.emplace_back(0.0);
     }
 }
 
-inline void Layer::copy_layer(int& index, std::array<float,TOTAL_W>& saved){ // index is the layer that we are on
+inline void Layer::copy_layer(size_t& index, std::array<float,TOTAL_W>& saved){ // index is the layer that we are on
 	// TESTING **********************
 		
     // this is for output layers weights 
         
-    for(int j = 0; j < topology[index]; j++){
+    for(size_t j = 0; j < topology[index]; j++){
          Weights o_w; // input weights
 
 		// loop thought the line (It should be based on the number of neuron for the layer )and then create a stream from the line and copy the weights 
@@ -78,21 +78,21 @@ inline void Layer::copy_layer(int& index, std::array<float,TOTAL_W>& saved){ // 
 
     
 // for all layers
-    for(int k = 0; k < topology[index] ; k++ ){
+    for(size_t k = 0; k < topology[index] ; k++ ){
         layer.emplace_back(0.0);
     }
 }
 
-inline void Layer::print_output_matrix(int& index) const {
-    for(int j = 0; j < topology[index]; j++){
+inline void Layer::print_output_matrix(size_t& index) const {
+    for(size_t j = 0; j < topology[index]; j++){
         output_weights[j].print_output_single_weights();
     }
     std::cout<<"\n";
 }
 
 // save the weight matrix to a file by passing the file std::ostream by reference ! 
-inline void Layer::save_matrix(int& index, std::ofstream& saved_weights){
-    for(int j = 0; j < topology[index]; j++){
+inline void Layer::save_matrix(size_t& index, std::ofstream& saved_weights){
+    for(size_t j = 0; j < topology[index]; j++){
         output_weights[j].save_weights(saved_weights);
     }
 	std::cout<<"\n";

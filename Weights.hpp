@@ -15,7 +15,7 @@ class Weights{
 public:
  
     // I don't really care about input weights since they are the output weight on the previous layer 
-    void gen_output(int n, int& index); // this function generate the output weights and fill single_output_weights
+    void gen_output(size_t n,size_t& index); // this function generate the output weights and fill single_output_weights
     void print_output_single_weights()const;
 	void save_weights(std::ofstream& saved_weights);
 
@@ -23,19 +23,19 @@ public:
     std::vector<double> single_output_weights;
 
 private:
-    double gen_random(int& index);
+    double gen_random(size_t& index);
 
 };
 
-inline void Weights::gen_output(int n,int& index){
-     for(int i = 0 ; i < n ; i++){
+inline void Weights::gen_output(size_t n,size_t& index){
+     for(size_t i = 0 ; i < n ; i++){
         single_output_weights.emplace_back(gen_random(index));
      }
 }
 
 // ********************************************* IMPLEMENTATION **********************************************
 
-inline double Weights::gen_random(int& index){
+inline double Weights::gen_random(size_t& index){
   
 // normal distribution media = 0, deviation = 1
 
