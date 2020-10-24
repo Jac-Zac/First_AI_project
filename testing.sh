@@ -5,7 +5,7 @@ time make
 
 # then it run the algorithm and it let it train and save the weight 
 echo $'\nRun the executable and time it *************************************************\n'
-time ./outupt.out
+time ./output
 echo 
 
 # clean the rest
@@ -21,7 +21,7 @@ make
 
 # then ./output.out 
 echo $'\nRun the executable and time it *************************************************\n'
-time ./outupt.out
+time ./output
 echo 
 
 # then change TEST back to false 

@@ -1,26 +1,31 @@
 # The compiler to use for the compilation  
-CXX = g++
+CXX=g++
 # The c++ flags to use for compilation
-CXXFLAGS = -c -Wall -Wextra -O3 -std=gnu++17
+CXXFLAGS=-c -Wall -Wextra -O3 -std=gnu++17
 # Object files 
-OBJECTS = main.o 
-# Object file deletions rm -f *.o 
-OBJDEL = rm -f *.o
+OBJS=main.o 
+# Header files 
+HDRS=*.hpp
 # Executable file 
-EXEC = outupt.out
+BIN=output
 
-all: output
-output: $(OBJECTS) da_includere.h game.hpp AI.hpp Weights.hpp Layer.hpp Net.hpp topology.hpp
-	$(CXX) $(OBJECTS) -o $(EXEC) -pthread  
+#  game.hpp AI.hpp Weights.hpp Layer.hpp Net.hpp topology.hpp
+
+all: $(BIN)
+
+$(BIN): $(OBJS) da_includere.h $(HDRS)
+	$(CXX) $(OBJS) -o $(BIN) -pthread  
 	@echo "Linked everything together"
-main.o: main.cpp
-	$(CXX) $(CXXFLAGS) main.cpp
 # Clean only the .o files 
 clean:
-	$(OBJDEL)
+	$(RM) $(OBJS)
 # Also delete the executable 
 clean_all:
-	$(OBJDEL) $(EXEC)
+	$(RM) $(OBJS) $(BIN)
 # Delete also the Saved_Weights of the network 
 clean_all_weights:
-	$(OBJDEL) $(EXEC) Saved_Weights
+	$(RM) $(OBJS) $(BIN) Saved_Weights
+
+# NO need for this because of the implicit dependences 
+# main.o: main.cpp
+#	$(CXX) $(CXXFLAGS) main.cpp
