@@ -1,31 +1,27 @@
-# The compiler to use for the compilation  
-CXX=g++
-# The c++ flags to use for compilation
-CXXFLAGS=-c -Wall -Wextra -O3 -std=gnu++17
-# Object files 
+###########################################################
+################### Makefile Template #####################
+###########################################################
+
+# Compiler settings - Can be customized.
+CXX = g++
+CXXFLAGS = -c -Wall -Wextra -O3 -std=gnu++17
+
+# Files  Object Headers end Executable 
 OBJS=main.o 
-# Header files 
 HDRS=*.hpp
-# Executable file 
 BIN=output
 
-#  game.hpp AI.hpp Weights.hpp Layer.hpp Net.hpp topology.hpp
+################# Unless you now what you are doing do not modify this part ################## 
 
 all: $(BIN)
 
 $(BIN): $(OBJS) $(HDRS)
 	$(CXX) $(OBJS) -o $(BIN) -pthread  
 	@echo "Linked everything together"
-# Clean only the .o files 
-clean:
-	$(RM) $(OBJS)
-# Also delete the executable 
-clean_all:
-	$(RM) $(OBJS) $(BIN)
-# Delete also the Saved_Weights of the network 
-clean_all_weights:
-	$(RM) $(OBJS) $(BIN) Saved_Weights
 
-# NO need for this because of the implicit dependences 
-# main.o: main.cpp
-#	$(CXX) $(CXXFLAGS) main.cpp
+# Clean everything but doesn't delete the Saved_Weights file 
+.PHONY: clean
+clean:
+	$(RM) $(OBJS) $(BIN)
+
+################## main compilation will work with implicit dependences ################## 

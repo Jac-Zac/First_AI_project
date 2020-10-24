@@ -9,8 +9,8 @@ time ./output
 echo 
 
 # clean the rest
-echo $'Clean all *************************************************\n'
-make clean_all
+echo $'Clean but do not delete the saved weights *************************************************\n'
+make clean
 
 # then change the value of TEST to true  
 sed -i '' "s/TEST false/TEST true/" topology.hpp 
@@ -29,4 +29,7 @@ sed -i '' "s/TEST true/TEST false/" topology.hpp
 
 # and you can decide to clean everything
 echo $'Cleaning everything *************************************************\n'
-make clean_all_weights
+make clean
+
+## Optional but useful for testing 
+rm -f Saved_Weights
