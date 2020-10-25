@@ -39,8 +39,7 @@ protected:
 // ********************************************* IMPLEMENTATION **********************************************
 
 inline AI::AI(){
-	std::cout<<"\n";
-	std::cout<<"AI training ... \n";
+	std::cout<<"\nAI training ... \n";
 }
 
 	// chose the best action following the feed forward
@@ -91,7 +90,7 @@ inline void AI::episode(Net& net){
 	std::srand((unsigned)time(0));
 	while(won == false){
 		player = (turn % 2 == 0) ? 1 : 2;
-		std::cout<<"--------------------"<<"\n"<<"Player number "<< player<<" Has the move"<<"\n";
+		std::cout<<"--------------------\n"<<"Player number "<< player<<" Has the move\n";
 		step(net);
 		// check if somebody won in this turn
 		check_won();

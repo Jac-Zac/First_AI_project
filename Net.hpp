@@ -139,7 +139,7 @@ inline void Net::Feedforward(std::array<int,N>& state){
 inline void Net::print_Net() const {
     // print neuron structure
     for(size_t i = 0; i < SIZE; i++){ // for all the layer in a Network 
-        std::cout<<"Layer number "<<i<<"\n"<<"--------------------\n";
+        std::cout<<"Layer number "<<i<<"\n--------------------\n";
         for(size_t j = 0; j < DNN[i].layer.size() ; j++){ // for all the neuron in a layer
             std::cout<<"Neuron number "<<j<<" = "<<DNN[i].layer[j]<<"\n";
         }
@@ -149,7 +149,7 @@ inline void Net::print_Net() const {
     // print matrix of weights
     for(size_t i = 0; i < SIZE; i++){
         if(i != (SIZE - 1)){
-            std::cout<<"Print output weights Layer "<<i<<"\n"<<"----------------------------------\n"<<"\n";
+            std::cout<<"Print output weights Layer "<<i<<"\n----------------------------------\n"<<"\n";
             DNN[i].print_output_matrix(i);
             std::cout<<"\n";
         }
