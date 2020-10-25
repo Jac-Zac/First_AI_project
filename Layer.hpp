@@ -50,13 +50,6 @@ inline void Layer::copy_layer(size_t& index, std::array<float,TOTAL_W>& saved){ 
     for(size_t j = 0; j < topology[index]; j++){
          Weights o_w; // input weights
 
-		// loop thought the line (It should be based on the number of neuron for the layer )and then create a stream from the line and copy the weights 
-		//  you than do not need the copy_output function
-		//  for(size_t j = 0 ; j < TOPOLOGY[index + 1]; j++ ]) // loop thought at the weights 
-		// for(size_t i = 0 ; i < $TOPOLIGY[index]; i++)[{std::istringstream in($line);}
-	    
-		// Loop throughout the whole file and create an vector of float and then get values from that vector to fill the network's weighs 
-
 		// this is to fill the network 
 
 		// I HAVE TO FIX THIS PART 
@@ -68,7 +61,7 @@ inline void Layer::copy_layer(size_t& index, std::array<float,TOTAL_W>& saved){ 
 		}else{
 			if(index < SIZE -1){  // I have to check because if I am at the last layer I can't do topology at index + 1 and it wouldn't even make sens so I have to check the It stops before 
 				for(size_t j = topology[index + 1] ; j < 2*topology[index + 1] ; j++){ // I start from topology[index + 1 ] because I want to be sure that that if I'm reading from the vector I'm not starting from the first place 
-					o_w.single_output_weights.emplace_back(3);  // this is for testing
+					o_w.single_output_weights.emplace_back(saved[j]);  // this is for testing
 				}
 			}
 		}
@@ -76,7 +69,6 @@ inline void Layer::copy_layer(size_t& index, std::array<float,TOTAL_W>& saved){ 
 		 output_weights.emplace_back(o_w);
     }
 
-    
 // for all layers
     for(size_t k = 0; k < topology[index] ; k++ ){
         layer.emplace_back(0.0);
