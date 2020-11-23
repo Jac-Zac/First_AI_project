@@ -53,10 +53,14 @@ inline void Layer::copy_layer(size_t& index, std::array<float,TOTAL_W>& saved){ 
 		// this is to fill the network 
 
 		// I HAVE TO FIX THIS PART 
-		 
+		
+		// commented out because of testing 
+
 		if(index == 0){
 			for(size_t i = 0; i < topology[index + 1]; i++){
 				o_w.single_output_weights.emplace_back(saved[i]); 
+
+
 			}
 		}else{
 			if(index < SIZE -1){  // I have to check because if I am at the last layer I can't do topology at index + 1 and it wouldn't even make sens so I have to check the It stops before 
@@ -65,6 +69,7 @@ inline void Layer::copy_layer(size_t& index, std::array<float,TOTAL_W>& saved){ 
 				}
 			}
 		}
+		
 	
 		 output_weights.emplace_back(o_w);
     }
@@ -86,6 +91,8 @@ inline void Layer::print_output_matrix(size_t& index) const {
 inline void Layer::save_matrix(size_t& index, std::ofstream& saved_weights){
     for(size_t j = 0; j < topology[index]; j++){
         output_weights[j].save_weights(saved_weights);
+	    saved_weights << "\n";
     }
+	saved_weights << "\n";
 	std::cout<<"\n";
 }

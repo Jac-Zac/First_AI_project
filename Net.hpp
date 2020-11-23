@@ -71,11 +71,13 @@ inline Net::Net(std::ifstream& previous_weights){
 	// TESTING ***********************
 	
 
+	// I have checked and the waights are loaded correctly
 	for(size_t i = 0 ; i < TOTAL_W ; i++){ // loop based on the number of weights we have 
 	// 	std::getline(previous_weights, saved[i]);
-	previous_weights >> saved[i];
+		previous_weights >> saved[i];
 	}
-	
+
+
 	// END TESTING ***********************
 
 	for(size_t j = 0 ; j < SIZE ; j++){  // SIZE is the size of the topology  

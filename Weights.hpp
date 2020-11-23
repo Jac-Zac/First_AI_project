@@ -72,6 +72,6 @@ inline void Weights::print_output_single_weights()const{
 inline void Weights::save_weights(std::ofstream& saved_weights){
 
     for(auto& it : single_output_weights){
-		saved_weights << it << "\n";
+		saved_weights << it << " ";
 	}
 }

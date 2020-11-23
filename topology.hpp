@@ -28,4 +28,3 @@ constexpr int count(size_t i){ // this function count the number of weights for 
 }
 
 #define TOTAL_W count(SIZE - 1) // total wights 
-
