@@ -44,7 +44,7 @@ The script compiles and run the program and then change the TEST variable. When 
 
 ###### This is my list of GOALS for the foreseeable future
 
-1. I have to load the weights 
+1. I have to load the weights, from the vector that I have created and put them into the weight matrices correctly 
 2. I have to code a loss function -> the loss function has to be in term of the Bellman equation calculated with respect to the value network 
 3. I have to create a new file for back_prop and the loss funciton !
 4. I have to code Back_Prop and than do rigorous testing to make sure it works
