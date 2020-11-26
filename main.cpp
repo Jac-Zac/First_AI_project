@@ -19,8 +19,6 @@ int main(){
    // test 
 	obj.test_AI();
 #endif 
-
-	std::cout <<" TOTAL Weights "<< TOTAL_W;
 }
 
 

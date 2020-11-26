@@ -56,37 +56,22 @@ inline Net::Net()
 
 // This function is useful to create a net with the same weights and architecture of another Net -> thus it it helpful for for test purposes
 inline Net::Net(std::ifstream& previous_weights){
-
-
-  // Loop throughout the whole file and create an vector of float and then get values from that vector to fill the network's weighs
-  // I have to change this part to instead of be filled with 9 be filled with the saved weights 
-  
-
-// 	for(std::string line, std::getline(previous_weights, line);){ // read stream line by line 
-// 	 	std::istringstream in(line);      //make a stream for the line itself
-// 		in >> saved[i]; 
-// 	}
-
-
-	// TESTING ***********************
-	
-
-	// I have checked and the waights are loaded correctly
+	// Loop throughout the whole file and create an vector of float and then get values from that vector to fill the network's weighs
+	// I have checked and the weights are loaded correctly
 	for(size_t i = 0 ; i < TOTAL_W ; i++){ // loop based on the number of weights we have 
-	// 	std::getline(previous_weights, saved[i]);
 		previous_weights >> saved[i];
 	}
 
-
-	// END TESTING ***********************
-
-	for(size_t j = 0 ; j < SIZE ; j++){  // SIZE is the size of the topology  
+	for(size_t j = 0, k = 0 ; j < SIZE ; j++){  // SIZE is the size of the topology  
+	// 		************************ I HAVE TO FIX THIS FOR DIFFERENT NUMBER OF LAYER **********
+	// 		for now it is Woking correctly with 3 layer, i may now that the problem is in the count function 
 		Layer l;
-		l.copy_layer(j,saved); // use this function to copy the weight from the file
+		// I will pass j as the index , the weights vector named (saved), and k which will allow me to now the location from where to start 
+		// // to pass the correct value for k, I will add the previous number of weights to skip 
+		l.copy_layer(j,saved, (k = k + count(j))); // use this function to copy the weight from the file
 		DNN.push_back(l);
 	}
-
-// ***************************************************
+	// ***************************************************
 }
 
 inline double Net::activation_function(double neuron, int type){

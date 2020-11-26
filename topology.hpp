@@ -21,7 +21,7 @@
 #define SIZE 3 // SIZE -> this is the size of the topology
 constexpr std::array<const size_t,SIZE> topology = {N,3,N}; // for now the number is arbitrary an really low for testing purposes 
 
-constexpr int count(size_t i){ // this function count the number of weights for a at any point that we have passed (doesn't check for index out of bound)
+constexpr int count(size_t i){ // this function count the number of weights for a any point that we have passed (doesn't check for index out of bound)
 	int sum = 0;
 	for( ; i > 0 ; i--){ sum = sum + (topology[i] * topology[i - 1]);}
     return sum;
