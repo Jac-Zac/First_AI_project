@@ -56,6 +56,7 @@ inline Net::Net()
 
 // This function is useful to create a net with the same weights and architecture of another Net -> thus it it helpful for for test purposes
 inline Net::Net(std::ifstream& previous_weights){
+
 	// Loop throughout the whole file and create an vector of float and then get values from that vector to fill the network's weighs
 	// I have checked and the weights are loaded correctly
 	for(size_t i = 0 ; i < TOTAL_W ; i++){ // loop based on the number of weights we have 
@@ -64,8 +65,6 @@ inline Net::Net(std::ifstream& previous_weights){
 
 	for(size_t j = 0, k = 0; j < SIZE ; j++){  // SIZE is the size of the topology  
 		
-	// 		************************ I HAVE TO FIX THIS FOR DIFFERENT NUMBER OF LAYER **********
-	// 		for now it is Woking correctly with 3 layer, i may now that the problem is in the count function
 		k = 0; // k start from 0 every time  
 		Layer l;
 		// I will pass j as the index , the weights vector named (saved), and k which will allow me to now the location from where to start 
@@ -73,14 +72,11 @@ inline Net::Net(std::ifstream& previous_weights){
 		l.copy_layer(j,saved, (k = k + count(j))); // use this function to copy the weight from the file
 		DNN.push_back(l);
 	}
-
-	// ***************************************************
 }
 
 inline double Net::activation_function(double neuron, int type){
    if(type == Tanh) return tanh(neuron);
    if(type == ReLU) return (neuron <= 0) ? 0 : neuron; // ternary operator implementation 
-     
     // I can add other activation function
     // default case
     return 0;

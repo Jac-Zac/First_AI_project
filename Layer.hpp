@@ -43,7 +43,6 @@ inline void Layer::create_layer(size_t& index){ // index is the layer that we ar
 }
 
 inline void Layer::copy_layer(size_t& index, std::array<float,TOTAL_W>& saved, size_t k){ // index is the layer that we are on
-	// TESTING **********************
 	// this is for output layers weights
 	for(size_t j = 0; j < topology[index]; j++){
 		// this is to fill the network 
