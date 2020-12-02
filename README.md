@@ -44,10 +44,10 @@ The script compiles and run the program and then change the TEST variable. When 
 
 ###### This is my list of GOALS for the foreseeable future
 
-1. I have to load the weights, It is working for 3 layer deep netowork but I will fix it for more complex on when I'll have the time 
+1. I have to create a new file for back_prop and the loss funciton !
 2. I have to code a loss function -> the loss function has to be in term of the Bellman equation calculated with respect to the value network 
-3. I have to create a new file for back_prop and the loss funciton !
-4. I have to code Back_Prop and than do rigorous testing to make sure it works
+3. I have to code Back_Prop and than do rigorous testing to make sure it works
+4. I will also add experience replay
 5. ... ( There is no point in listing everyithing right now )
 
 
