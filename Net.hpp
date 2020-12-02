@@ -62,15 +62,18 @@ inline Net::Net(std::ifstream& previous_weights){
 		previous_weights >> saved[i];
 	}
 
-	for(size_t j = 0, k = 0 ; j < SIZE ; j++){  // SIZE is the size of the topology  
+	for(size_t j = 0, k = 0; j < SIZE ; j++){  // SIZE is the size of the topology  
+		
 	// 		************************ I HAVE TO FIX THIS FOR DIFFERENT NUMBER OF LAYER **********
-	// 		for now it is Woking correctly with 3 layer, i may now that the problem is in the count function 
+	// 		for now it is Woking correctly with 3 layer, i may now that the problem is in the count function
+		k = 0; // k start from 0 every time  
 		Layer l;
 		// I will pass j as the index , the weights vector named (saved), and k which will allow me to now the location from where to start 
 		// // to pass the correct value for k, I will add the previous number of weights to skip 
 		l.copy_layer(j,saved, (k = k + count(j))); // use this function to copy the weight from the file
 		DNN.push_back(l);
 	}
+
 	// ***************************************************
 }
 
