@@ -12,9 +12,9 @@
 
 // ********************************************* DEFINITION **********************************************
 
+// AI class
 class AI : public game {
 public:
-// AI class
 AI();
 	void step(Net& net);
 	void episode(Net& net);
@@ -42,21 +42,21 @@ inline AI::AI(){
 	std::cout<<"\nAI training ... \n";
 }
 
-	// chose the best action following the feed forward
+// Chose the best action following the feed forward
 inline void AI::exploit(Net& net){
 
-      // IMPORTANT for later *************************
+	// IMPORTANT for later *************************
 	    	// devo ancora mondifcarla per fare sapere alla rete neurale se sto facendo un azione casuale perchè quelle che mi ha dato la rete neurale era pessima lui non stava suggerendo una buona mosssa  
-     // **********************************************
+    // **********************************************
 	
-	 //  we pass through the network
+	//  we pass through the network
 	net.Feedforward(state);
 
-	if(turn % 2 == 0){ // check the turn 
+	if(turn % 2 == 0){// check the turn 
 		// this is for player 1
 		action_1 = std::distance(net.DNN.back().layer.begin(),std::max_element(net.DNN.back().layer.begin(), net.DNN.back().layer.end())); // back get the last of a list and thous the output layer
 
-	// if the space on the board is already fill then choose a random action  
+		// if the space on the board is already fill then choose a random action  
 		if(state[action_1] != 0){
 			explore();
 		}
@@ -73,21 +73,22 @@ inline void AI::exploit(Net& net){
 
 // explore in a random manner 
 inline void AI::explore(){
-   if(turn % 2 == 0){
+	if(turn % 2 == 0){
       do{
-       action_1 = rand() % 9;
+       action_1 = rand() % 9; // random move (between 1 and 9) -> this is for the first player 
       }while(state[action_1] != 0);
    }else{
       do{
-         action_2 = rand() % 9;
-      }while(state[action_2] != 0);
+         action_2 = rand() % 9; // random 
+      }while(state[action_2] != 0); // random move for the second player 
    }
 }
 
 // inoltre doveri sviluppare dele reword 
-// da correggere 
+// da correggere
+// This is the function for every episode 
 inline void AI::episode(Net& net){ 
-	std::srand((unsigned)time(0));
+	std::srand((unsigned)time(0)); // srand for the step function  // forse non serve devo controllare ! 
 	while(won == false){
 		player = (turn % 2 == 0) ? 1 : 2;
 		std::cout<<"--------------------\n"<<"Player number "<< player<<" Has the move\n";
@@ -95,13 +96,13 @@ inline void AI::episode(Net& net){
 		// check if somebody won in this turn
 		check_won();
 
-	//	control for draw
+		//	control for draw
 		if(turn == 9 && won == false){
 			std::cout<<"Game ended in a draw --------------------\n";
 			return;
 		}
 
-	// to check if game ended
+		// to check if game ended
 		if(won == true) {
 			std::cout<<"Player "<<player<<" won \n";
 		}
@@ -123,9 +124,8 @@ inline bool AI::rand_exp(){
 }
 
 
-// this should not be an episode but is just 1 step 
+// this if the function that allows the AI to play fallowing various rules 
 inline void AI::step(Net& net){
-    // this if the function that allows the AI to play fallowing various rules 
    
     // I have to check if move is allowed if the slot is != 0 move should be the next best Q_value
     if(turn % 2 == 0){
@@ -176,25 +176,24 @@ inline void AI::train_AI(){
 	Net net;
  	Net value_net = net;
 	
-// Now we should also create a target network which is helpful to calculate a Loss function 
+	// Now we should also create a target network which is helpful to calculate a Loss function 
     episode(net);
     
     for(size_t i = 0 ; i < batch_size ; i++ ){
 		net.Feedforward(state);
     }
-    
     net.print_Net();
 }
 
 
+// This is for when we have already trained the Neural Net 
 inline void AI::test_AI(){
 	
 		std::ifstream previous_weights("Saved_Weights");
 		Net net(previous_weights);
 		previous_weights.close();
-		// spacing 
 		std::cout<<"\n";
-		// print the new net 	
-		net.print_Net();
+
+		net.print_Net(); // in this case the Net that get printed is the new Net 
 
 }
