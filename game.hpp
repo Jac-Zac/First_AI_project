@@ -7,7 +7,7 @@
 //
 
 #pragma once
-#include "da_includere.hpp"
+#include "header.h"
 
 // player 1 -> 1
 // player 2 -> -1
@@ -15,7 +15,7 @@
 class game{
 public:
     void print_board() const;
-    std::array<int,N> state = {0,0,0,0,0,0,0,0,0};
+    std::array<int,N> state = {0,0,0,0,0,0,0,0,0}; // initializing with 0 which means non of those are utilized spaces yet 
 };
 
 
