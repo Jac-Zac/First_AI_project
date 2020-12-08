@@ -43,6 +43,7 @@ The script compiles and run the program and then change the TEST variable. When 
 ### At what point am I ? 🔖
 
 ###### This is my list of GOALS for the foreseeable future
+I should also add some better comments but I'm doing it
 
 1. I have to create a new file for back_prop and the loss funciton !
 2. I have to code a loss function -> the loss function has to be in term of the Bellman equation calculated with respect to the value network 
