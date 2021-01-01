@@ -46,7 +46,7 @@ inline AI::AI(){
 inline void AI::exploit(Net& net){
 
 	// IMPORTANT for later *************************
-	    	// devo ancora mondifcarla per fare sapere alla rete neurale se sto facendo un azione casuale perchè quelle che mi ha dato la rete neurale era pessima lui non stava suggerendo una buona mosssa  
+	 // devo ancora mondifcarla per fare sapere alla rete neurale se sto facendo un azione casuale perchè quelle che mi ha dato la rete neurale era pessima lui non stava suggerendo una buona mosssa  
     // **********************************************
 	
 	//  we pass through the network

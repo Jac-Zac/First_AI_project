@@ -22,12 +22,3 @@ int main(){
 }
 
 
-// when I have time I have to code back pro and test it rigorously  
-// and also unite everything together
-
-// To do for the future 
-
-// create a replay buffer class and the related components 
-// create a multi-threaded function to call epoch with replay buffers with perhaps a large batch size but I have pay attention to the alive variable 
-
-// when you will have finished try to implement it for different tic tac toe rules like the game NOTAKTO 

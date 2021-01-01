@@ -43,12 +43,18 @@ The script compiles and run the program and then change the TEST variable. When 
 ### At what point am I ? 🔖
 
 ###### This is my list of GOALS for the foreseeable future
-I should also add some better comments but I'm doing it
+Refresh my konwloedge on DQN 
 
 1. I have to create a new file for back_prop and the loss funciton !
 2. I have to code a loss function -> the loss function has to be in term of the Bellman equation calculated with respect to the value network 
-3. I have to code Back_Prop and than do rigorous testing to make sure it works
+3. I have to code Back_Prop and than do rigorous testing to make sure it works and then unite everything together 
 4. I will also add experience replay
 5. ... ( There is no point in listing everyithing right now )
 
 
+#### To do for the future 
+
+Create a replay buffer class and the related components 
+Create a multi-threaded function to call epoch with replay buffers with perhaps a large batch size but I have pay attention to the alive variable 
+
+When you will have finished try to implement it for different tic tac toe rules like the game NOTAKTO 

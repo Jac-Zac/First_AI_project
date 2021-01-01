@@ -22,6 +22,7 @@ public:
 #if TEST == false
 	~Net();
 #endif 
+
 	// my neural network is an array of Layer
 	std::vector<Layer> DNN;
     
@@ -109,7 +110,6 @@ inline void Net::Feedforward(std::array<int,N>& state){
        std::cout<<"The value of the neuron number "<<i<<" is = "<<DNN.back().layer[i]<<"\n"; // back because we care only about the last layer
     }
 #endif
-
     // after every Feedforward all neuron should be -> 0
     // the one in the first layer are not a problem 
     for(size_t j = 0 ; j < SIZE - 1; j++){
