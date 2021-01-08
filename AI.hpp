@@ -193,6 +193,11 @@ inline void AI::test_AI(){
 		Net net(previous_weights);
 		previous_weights.close();
 		std::cout<<"\n";
+		episode(net);
+
+		for(size_t i = 0 ; i < batch_size ; i++ ){
+			net.Feedforward(state);
+		}
 
 		net.print_Net(); // in this case the Net that get printed is the new Net 
 

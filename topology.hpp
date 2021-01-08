@@ -11,7 +11,7 @@
 #define N 9 // N will be the dimension of the board and consequently the input and output number of neuron in this net but can be changed to be applied for other games
 
 #define TEST false // if test is true then we should not save new weight and use the old weight and also not back_prop because we already trained the Net
-#define PRINT true  // if PRINT == true -> print the output layer after every Feed Forward of the net
+#define PRINT false  // if PRINT == true -> print the output layer after every Feed Forward of the net
 // activation functions
 // for now -> than I can add other 
 #define ReLU 0
