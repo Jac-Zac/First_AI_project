@@ -12,19 +12,18 @@
 // player 1 -> 1
 // player 2 -> -1
 
-class game{
-public:
+class game {
+  public:
     void print_board() const;
-    std::array<int,N> state = {0,0,0,0,0,0,0,0,0}; // initializing with 0 which means non of those are utilized spaces yet 
+    std::array<int, N> state = {0, 0, 0, 0, 0, 0, 0, 0, 0}; // initializing with 0 which means non of those are utilized spaces yet
 };
-
 
 // printing board function
 inline void game::print_board() const {
-    for(uint64_t j = 0; j < N; j = j+3){
-        for(uint64_t i = 0; i < 3; i++){
-            std::cout<<state[i + j]<<" ";
+    for (uint64_t j = 0; j < N; j = j + 3) {
+        for (uint64_t i = 0; i < 3; i++) {
+            std::cout << state[i + j] << " ";
         }
-        std::cout<<"\n";
+        std::cout << "\n";
     }
 }

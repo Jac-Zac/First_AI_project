@@ -12,15 +12,14 @@
 
 // ********************************************* DEFINITION **********************************************
 
-class BackProp : public Net{
-public:
-	BackProp();
-protecteD:
-	void Loss();
+class BackProp : public Net {
+  public:
+    BackProp();
+    protecteD : void Loss();
 }
 
 // ********************************************* DEFINITION **********************************************
 
 // constructor
-inline BackProp::BackProp(){
+inline BackProp::BackProp() {
 }
