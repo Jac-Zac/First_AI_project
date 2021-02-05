@@ -13,7 +13,7 @@ class Layer{
 public:
     std::vector<double> layer;	// neurons in a layer 
 	void create_layer(size_t& index);	// This function creates layers and initialize weights at training time
-	void copy_layer(size_t& inedx, std::array<float,TOTAL_W>& save, size_t k);	// this is useful tu create a layer form existing weights at test time for example
+	void copy_layer(size_t& inedx, std::array<float,TOTAL_W>& save, uint64_t k);	// this is useful tu create a layer form existing weights at test time for example
 
     void print_output_matrix(size_t& index)const;	// print matrix of the output weight 
 	void save_matrix(size_t& index, std::ofstream& saved_weights);	// save the matrix of the output weights into the Saved_Weights file 
@@ -27,7 +27,7 @@ public:
 
 
 inline void Layer::create_layer(size_t& index){	// index allows us to now which layer we are on
-	for(size_t j = 0; j < topology[index]; j++){
+	for(uint64_t j = 0; j < topology[index]; j++){
 		if(index < SIZE - 1 ){	// if I didn't do the check I would go out of bound and I can't do that 
 			Weights o_w; 
 			o_w.gen_output(topology[index + 1],index); // since we want the output weight we need to pass the number of neurones of the layer after
@@ -38,9 +38,9 @@ inline void Layer::create_layer(size_t& index){	// index allows us to now which 
 }
 
 
-inline void Layer::copy_layer(size_t& index, std::array<float,TOTAL_W>& saved, size_t k){	// index is the layer that we are on, and saved is the array that I have filled from the Saved_Weights file, k is helpful to start at the correct index of saved 
+inline void Layer::copy_layer(size_t& index, std::array<float,TOTAL_W>& saved, uint64_t k){	// index is the layer that we are on, and saved is the array that I have filled from the Saved_Weights file, k is helpful to start at the correct index of saved 
 	// this is for output layers weights because I only need those, else would be redundant 
-	for(size_t j = 0; j < topology[index]; j++){
+	for(uint64_t j = 0; j < topology[index]; j++){
 		// this is to fill the network 
 		if(index < SIZE - 1){  // I have to check because if I am at the last layer I can't do topology at index + 1 and it wouldn't even make sens so I have to check the It stops before 
 		Weights o_w; // output weights
@@ -54,7 +54,7 @@ inline void Layer::copy_layer(size_t& index, std::array<float,TOTAL_W>& saved, s
 
 // just printing to screen 
 inline void Layer::print_output_matrix(size_t& index) const {
-    for(size_t j = 0; j < topology[index]; j++){
+    for(uint64_t j = 0; j < topology[index]; j++){
         output_weights[j].print_output_single_weights();
     }
     std::cout<<"\n";
@@ -62,7 +62,7 @@ inline void Layer::print_output_matrix(size_t& index) const {
 
 // save the weight matrix to a file by passing the file std::ostream by reference ! 
 inline void Layer::save_matrix(size_t& index, std::ofstream& saved_weights){
-    for(size_t j = 0; j < topology[index]; j++){
+    for(uint64_t j = 0; j < topology[index]; j++){
         output_weights[j].save_weights(saved_weights);
 	    saved_weights << "\n";
     }

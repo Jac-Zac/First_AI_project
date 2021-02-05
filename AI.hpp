@@ -22,11 +22,11 @@ AI();
 	void train_AI();
 	void test_AI();
 protected:	
-	size_t batch_size = 1; // for now batch size is only 1
-	unsigned short turn = 0;
-	unsigned short player;
-	unsigned short action_1 = 0;
-	unsigned short action_2 = 1;
+	uint64_t batch_size = 1; // for now batch size is only 1
+	uint_fast16_t turn = 0;
+	uint_fast16_t player;
+	uint_fast16_t action_1 = 0;
+	uint_fast16_t action_2 = 1;
 	bool won = false; // if won == true game is ended else we should end
 	void exploit(Net& net);
 	void explore();
@@ -88,7 +88,7 @@ inline void AI::explore(){
 // da correggere
 // This is the function for every episode 
 inline void AI::episode(Net& net){ 
-	std::srand((unsigned)time(0)); // srand for the step function  // forse non serve devo controllare ! 
+	std::srand((intmax_t)time(0)); // srand for the step function  // forse non serve devo controllare ! 
 	while(won == false){
 		player = (turn % 2 == 0) ? 1 : 2;
 		std::cout<<"--------------------\n"<<"Player number "<< player<<" Has the move\n";
@@ -179,7 +179,7 @@ inline void AI::train_AI(){
 	// Now we should also create a target network which is helpful to calculate a Loss function 
     episode(net);
     
-    for(size_t i = 0 ; i < batch_size ; i++ ){
+    for(uint64_t i = 0 ; i < batch_size ; i++ ){
 		net.Feedforward(state);
     }
     net.print_Net();
@@ -195,7 +195,7 @@ inline void AI::test_AI(){
 		std::cout<<"\n";
 		episode(net);
 
-		for(size_t i = 0 ; i < batch_size ; i++ ){
+		for(uint64_t i = 0 ; i < batch_size ; i++ ){
 			net.Feedforward(state);
 		}
 

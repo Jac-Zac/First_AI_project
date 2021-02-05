@@ -94,8 +94,8 @@ inline void Net::Feedforward(std::array<int,N>& state){
     
     for(size_t j = 0 ; j < SIZE - 1; j++){
         // loop trough layers
-        for(size_t k = 0 ; k < topology[j + 1] ; k++){  // loop trough the neurons in the new layer 
-            for(size_t i = 0; i < topology[j]; i++){
+        for(uint64_t k = 0 ; k < topology[j + 1] ; k++){  // loop trough the neurons in the new layer 
+            for(uint64_t i = 0; i < topology[j]; i++){
                 DNN[j + 1].layer[k] += DNN[j].layer[i]*DNN[j].output_weights[i].single_output_weights[k];
             }
             // apply the activation fusion
@@ -106,7 +106,7 @@ inline void Net::Feedforward(std::array<int,N>& state){
 // if in print mode print the output layer 
 #if PRINT == true
     // print the last layer neurons
-    for(size_t i = 0; i < N ; i++){
+    for(uint64_t i = 0; i < N ; i++){
        std::cout<<"The value of the neuron number "<<i<<" is = "<<DNN.back().layer[i]<<"\n"; // back because we care only about the last layer
     }
 #endif
@@ -114,7 +114,7 @@ inline void Net::Feedforward(std::array<int,N>& state){
     // the one in the first layer are not a problem 
     for(size_t j = 0 ; j < SIZE - 1; j++){
         // loop trough layers
-        for(size_t k = 0 ; k < topology[j + 1] ; k++){  // loop trough the neurons in the new layer 
+        for(uint64_t k = 0 ; k < topology[j + 1] ; k++){  // loop trough the neurons in the new layer 
             DNN[j + 1].layer[k] = 0.0 ;
         }
     }
@@ -126,7 +126,7 @@ inline void Net::print_Net() const {
     // print neuron structure
     for(size_t i = 0; i < SIZE; i++){ // for all the layer in a Network 
         std::cout<<"Layer number "<<i<<"\n--------------------\n";
-        for(size_t j = 0; j < DNN[i].layer.size() ; j++){ // for all the neuron in a layer
+        for(uint64_t j = 0; j < DNN[i].layer.size() ; j++){ // for all the neuron in a layer
             std::cout<<"Neuron number "<<j<<" = "<<DNN[i].layer[j]<<"\n";
         }
         std::cout<<std::endl;

@@ -7,6 +7,7 @@
 //
 
 #pragma once
+#include<stdint.h>
 #include<iostream>
 #include<fstream>
 #include<array>

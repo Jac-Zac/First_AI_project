@@ -4,7 +4,7 @@
 
 # Compiler settings - Can be customized.
 CXX = g++
-CXXFLAGS = -c -Wall -Wextra -O3 -std=gnu++2a
+CXXFLAGS = -c -Wall -Wextra -O2 -std=gnu++2a 
 
 # Files  Object Headers end Executable 
 OBJS=main.o 

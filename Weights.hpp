@@ -15,10 +15,10 @@ class Weights{
 public:
  
     // I don't really care about input weights since they are the output weight on the previous layer 
-    void gen_output(size_t n,size_t& index); // this function generate the output weights and fill single_output_weights
+    void gen_output(uint64_t n,size_t& index); // this function generate the output weights and fill single_output_weights
     void print_output_single_weights()const;
 	void save_weights(std::ofstream& saved_weights);
-	void copy_weights(size_t n, std::array<float,TOTAL_W>& saved, size_t k);
+	void copy_weights(uint64_t n, std::array<float,TOTAL_W>& saved, uint64_t k);
 
     //  vector of weight in a single line 
     std::vector<double> single_output_weights;
@@ -31,14 +31,14 @@ private:
 // ********************************************* IMPLEMENTATION **********************************************
 //
 //
-inline void Weights::gen_output(size_t n,size_t& index){
-     for(size_t i = 0; i < n ; i++){
+inline void Weights::gen_output(uint64_t n,size_t& index){
+     for(uint64_t i = 0; i < n ; i++){
         single_output_weights.emplace_back(gen_random(index));
      }
 }
 
-inline void Weights::copy_weights(size_t n, std::array<float,TOTAL_W>& saved, size_t k){
-	for(size_t i = n; i < 2*n; i++,k++){ // remember that I'm starting from topology[index + 1]
+inline void Weights::copy_weights(uint64_t n, std::array<float,TOTAL_W>& saved, uint64_t k){
+	for(uint64_t i = n; i < 2*n; i++,k++){ // remember that I'm starting from topology[index + 1]
 		single_output_weights.emplace_back(saved[k]);
 	}
 

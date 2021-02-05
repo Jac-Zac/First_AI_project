@@ -18,3 +18,9 @@ public:
 protecteD:
 	void Loss();
 }
+
+// ********************************************* DEFINITION **********************************************
+
+// constructor
+inline BackProp::BackProp(){
+}

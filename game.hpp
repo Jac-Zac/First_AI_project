@@ -21,8 +21,8 @@ public:
 
 // printing board function
 inline void game::print_board() const {
-    for(size_t j = 0; j < N; j = j+3){
-        for(size_t i = 0; i < 3; i++){
+    for(uint64_t j = 0; j < N; j = j+3){
+        for(uint64_t i = 0; i < 3; i++){
             std::cout<<state[i + j]<<" ";
         }
         std::cout<<"\n";
