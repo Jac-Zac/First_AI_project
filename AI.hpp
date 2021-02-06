@@ -93,7 +93,7 @@ inline void AI::episode(Net &net) {
                                    // serve devo controllare !
     while (won == false) {
         player = (turn % 2 == 0) ? 1 : 2;
-        std::cout << "--------------------\n"
+        std::cout << "------------------------------\n"
                   << "Player number " << player << " Has the move\n";
         step(net);
         // check if somebody won in this turn
@@ -101,13 +101,13 @@ inline void AI::episode(Net &net) {
 
         //	control for draw
         if (turn == 9 && won == false) {
-            std::cout << "Game ended in a draw --------------------\n";
+            std::cout << "\nGame ended in a draw -------------------------\n\n";
             return;
         }
 
         // to check if game ended
         if (won == true) {
-            std::cout << "Player " << player << " won \n";
+            std::cout << "\nPlayer " << player << " won \n\n";
         }
     }
 }

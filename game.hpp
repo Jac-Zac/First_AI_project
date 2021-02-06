@@ -15,7 +15,7 @@
 class Game {
   public:
     void print_board() const;
-    std::array<int, N> state = {0, 0, 0, 0, 0, 0, 0, 0, 0}; // initializing with 0 which means non of those are utilized spaces yet
+    std::array<int, N> state = {0}; // initializing with 0 which means non of those are utilized spaces yet
 };
 
 // printing board function

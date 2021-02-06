@@ -108,9 +108,7 @@ inline void Net::Feedforward(std::array<int, N> &state) {
 #if PRINT == true
     // print the last layer neurons
     for (uint64_t i = 0; i < N; i++) {
-        std::cout << "The value of the neuron number " << i
-                  << " is = " << DNN.back().layer[i]
-                  << "\n"; // back because we care only about the last layer
+        std::cout << "The value of the neuron number " << i << " is = " << DNN.back().layer[i] << "\n"; // back because we care only about the last layer
     }
 #endif
     // after every Feedforward all neuron should be -> 0 the one in the first layer are not a problem
@@ -130,6 +128,7 @@ inline void Net::print_Net() const {
         for (uint64_t j = 0; j < DNN[i].layer.size();j++) { // for all the neuron in a layer
             std::cout << "Neuron number " << j << " = " << DNN[i].layer[j]<< "\n";
         }
+		std::cout<<"\n";
     }
 
     // print matrix of weights
