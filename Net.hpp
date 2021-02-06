@@ -9,7 +9,7 @@
 #pragma once
 
 #include "Layer.hpp"
-#include "game.hpp"
+#include "Game.hpp"
 
 // ********************************************* DEFINITION **********************************************
 
@@ -58,13 +58,11 @@ inline Net::Net() {
 inline Net::Net(std::ifstream &previous_weights) {
     // Loop throughout the whole file and create an vector of float.
 	// Get values from that vector to fill the network's weighs I have checked and the weights are loaded correctly
-    for (size_t i = 0; i < TOTAL_W;
-         i++) { // loop based on the number of weights we have
+    for (size_t i = 0; i < TOTAL_W; i++) { // loop based on the number of weights we have
         previous_weights >> saved[i];
     }
 
-    for (size_t j = 0, k = 0; j < SIZE;
-         j++) { // SIZE is the size of the topology
+    for (size_t j = 0, k = 0; j < SIZE; j++) { // SIZE is the size of the topology
 
         k = 0; // k start from 0 every time
         Layer l;
@@ -99,13 +97,10 @@ inline void Net::Feedforward(std::array<int, N> &state) {
         for (uint64_t k = 0; k < topology[j + 1];
              k++) { // loop trough the neurons in the new layer
             for (uint64_t i = 0; i < topology[j]; i++) {
-                DNN[j + 1].layer[k] +=
-                    DNN[j].layer[i] *
-                    DNN[j].output_weights[i].single_output_weights[k];
+                DNN[j + 1].layer[k] += DNN[j].layer[i] * DNN[j].output_weights[i].single_output_weights[k];
             }
             // apply the activation fusion
-            DNN[j + 1].layer[k] = activation_function(
-                DNN[j + 1].layer[k], ReLU); // activation function
+            DNN[j + 1].layer[k] = activation_function(DNN[j + 1].layer[k], ReLU); // activation function
         }
     }
 
@@ -118,12 +113,10 @@ inline void Net::Feedforward(std::array<int, N> &state) {
                   << "\n"; // back because we care only about the last layer
     }
 #endif
-    // after every Feedforward all neuron should be -> 0
-    // the one in the first layer are not a problem
+    // after every Feedforward all neuron should be -> 0 the one in the first layer are not a problem
     for (size_t j = 0; j < SIZE - 1; j++) {
         // loop trough layers
-        for (uint64_t k = 0; k < topology[j + 1];
-             k++) { // loop trough the neurons in the new layer
+        for (uint64_t k = 0; k < topology[j + 1]; k++) { // loop trough the neurons in the new layer
             DNN[j + 1].layer[k] = 0.0;
         }
     }
@@ -134,22 +127,16 @@ inline void Net::print_Net() const {
     // print neuron structure
     for (size_t i = 0; i < SIZE; i++) { // for all the layer in a Network
         std::cout << "Layer number " << i << "\n--------------------\n";
-        for (uint64_t j = 0; j < DNN[i].layer.size();
-             j++) { // for all the neuron in a layer
-            std::cout << "Neuron number " << j << " = " << DNN[i].layer[j]
-                      << "\n";
+        for (uint64_t j = 0; j < DNN[i].layer.size();j++) { // for all the neuron in a layer
+            std::cout << "Neuron number " << j << " = " << DNN[i].layer[j]<< "\n";
         }
-        std::cout << std::endl;
     }
 
     // print matrix of weights
     for (size_t i = 0; i < SIZE; i++) {
         if (i != (SIZE - 1)) {
-            std::cout << "Print output weights Layer " << i
-                      << "\n----------------------------------\n"
-                      << "\n";
+            std::cout << "Print output weights Layer " << i << "\n----------------------------------\n" << "\n";
             DNN[i].print_output_matrix(i);
-            std::cout << "\n";
         }
     }
 }

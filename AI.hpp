@@ -8,12 +8,12 @@
 
 #pragma once
 #include "Net.hpp"
-#include "game.hpp"
+#include "Game.hpp"
 
 // ********************************************* DEFINITION **********************************************
 
 // AI class
-class AI : public game {
+class AI : public Game {
   public:
     AI();
     void step(Net &net);
@@ -55,11 +55,7 @@ inline void AI::exploit(Net &net) {
 
     if (turn % 2 == 0) { // check the turn
         // this is for player 1
-        action_1 = std::distance(
-            net.DNN.back().layer.begin(),
-            std::max_element(
-                net.DNN.back().layer.begin(),
-                net.DNN.back().layer.end())); // back get the last of a list and thous the output layer
+        action_1 = std::distance(net.DNN.back().layer.begin(),std::max_element(net.DNN.back().layer.begin(),net.DNN.back().layer.end())); // back get the last of a list and thous the output layer
 
         // if the space on the board is already fill then choose a random action
         if (state[action_1] != 0) {
@@ -67,11 +63,7 @@ inline void AI::exploit(Net &net) {
         }
     } else {
         // this is for player 2
-        action_2 = std::distance(
-            net.DNN.back().layer.begin(),
-            std::max_element(
-                net.DNN.back().layer.begin(),
-                net.DNN.back().layer.end())); // back get the last of a list and thous the output layer
+        action_2 = std::distance(net.DNN.back().layer.begin(),std::max_element(net.DNN.back().layer.begin(),net.DNN.back().layer.end()));
 
         // if the space on the board is already fill then choose a random action
         if (state[action_2] != 0) {
@@ -169,6 +161,7 @@ inline void AI::check_won() {
     // this is too check if anyone won the game
 	// No loops to check because of worst time complexity
 
+	// check rows
     if ((state[0] == 1 && state[1] == 1 && state[2] == 1) ||
         (state[3] == 1 && state[4] == 1 && state[5] == 1) ||
         (state[6] == 1 && state[7] == 1 && state[8] == 1))

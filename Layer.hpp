@@ -31,10 +31,7 @@ inline void Layer::create_layer(
         if (index < SIZE - 1) { 
 			// if I didn't do the check I would go out of bound and I can't do that
             Weights o_w;
-            o_w.gen_output(
-                topology[index + 1],
-                index); // since we want the output weight we need to pass the
-                        // number of neurones of the layer after
+            o_w.gen_output(topology[index + 1], index); // since we want the output weight we need to pass the number of neurones of the layer after
             output_weights.emplace_back(o_w);
         }
         layer.emplace_back(0.0); // this initialize to 0.0

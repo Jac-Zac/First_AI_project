@@ -1,5 +1,5 @@
 //
-//  BackProp.hpp
+//  Gradient.hpp
 //  AI_Tria 2.0
 //
 //  Created by Jacopo Zacchigna on 31/01/2021.
@@ -9,17 +9,20 @@
 #pragma once
 
 #include "Net.hpp"
+#include "AI.hpp"
 
 // ********************************************* DEFINITION **********************************************
 
-class BackProp : public Net {
+class Gradient : public Net {
   public:
-    BackProp();
-    protecteD : void Loss();
+    Gradient(); // The constructor should get as parameter The Net and informations about the episode 
+  protected:
+	void Loss();
+	void BackProp();
 }
 
 // ********************************************* DEFINITION **********************************************
 
 // constructor
-inline BackProp::BackProp() {
+inline Gradient::Gradient() {
 }
