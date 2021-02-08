@@ -91,7 +91,7 @@ inline void AI::explore() {
 inline void AI::episode(Net &net) {
     std::srand((intmax_t)time(0)); // srand for the step function  // forse non
                                    // serve devo controllare !
-    while (won == false) {
+    while (!won) { // if won == false
         player = (turn % 2 == 0) ? 1 : 2;
         std::cout << "------------------------------\n"
                   << "Player number " << player << " Has the move\n";
@@ -100,13 +100,13 @@ inline void AI::episode(Net &net) {
         check_won();
 
         //	control for draw
-        if (turn == 9 && won == false) {
+        if (turn == 9 && !won) {
             std::cout << "\nGame ended in a draw -------------------------\n\n";
             return;
         }
 
         // to check if game ended
-        if (won == true) {
+        if (won) { // if won == true 
             std::cout << "\nPlayer " << player << " won \n\n";
         }
     }
@@ -122,11 +122,9 @@ inline bool AI::rand_exp() {
     generator.seed(std::random_device{}());
 
     // if we return true than it will exploit else it will explore
-    if (distribution(generator) >= threshold)
-        return true;
-    else {
-        return false;
-    }
+    if (distribution(generator) >= threshold) {
+        return true; }
+		return false;
 }
 
 // this if the function that allows the AI to play fallowing various rules
@@ -139,7 +137,7 @@ inline void AI::step(Net &net) {
 
         // per adesso è un test ma bisonga ripararlo
         exploiting = rand_exp();
-        if (exploiting == true) {
+        if (exploiting) { // if exploiting == true
             exploit(net);
         } else
             explore();

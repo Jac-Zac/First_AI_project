@@ -15,13 +15,14 @@
           // weight and also not back_prop because we already trained the Net
 #define PRIT false // if PRINT == true -> print the output layer after every Feed Forward
           // of the net
-// activation functions
-// for now -> than I can add other
+
+// Activation functions
 #define ReLU 0
 #define Tanh 1
 
 // topology of the network -> this can change I think I will try with
 // {N,12,15,12,N}
+
 #define SIZE 3 // SIZE -> this is the size of the topology
 constexpr std::array<const size_t, SIZE> topology = {N, 2,N}; // for now the number is arbitrary an really low for testing purposes
 

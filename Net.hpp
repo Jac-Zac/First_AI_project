@@ -31,7 +31,7 @@ class Net : public Layer {
     // TO DO ******************
     // create error function
     // create back prop and see what you are missing
-    // 	     ******************
+    // ******************
 
     void print_Net() const;
 
@@ -80,15 +80,11 @@ inline double Net::activation_function(double neuron, int type) {
     if (type == ReLU)
         return (neuron <= 0) ? 0 : neuron; // ternary operator implementation
     // I can add other activation function
-    // default case
     return 0;
 }
 
 inline void Net::Feedforward(std::array<int, N> &state) {
-    // implementation of Feedforward
-
-    // fill the neurons of the first layer, I think I have to pass all of this trough an activation function to
-    for (size_t i = 0; i < N; i++) {
+    for (size_t i = 0; i < N; i++) { // fill the neurons of the first layer, I think I have to pass all of this trough an activation function to
         DNN[0].layer[i] = state[i]; // fill all the input neuron with the state that was passed in
     }
 
@@ -104,7 +100,7 @@ inline void Net::Feedforward(std::array<int, N> &state) {
         }
     }
 
-// if in print mode print the output layer
+// If in print mode print the output layer
 #if PRINT == true
     // print the last layer neurons
     for (uint64_t i = 0; i < N; i++) {
@@ -120,9 +116,9 @@ inline void Net::Feedforward(std::array<int, N> &state) {
     }
 }
 
-// function to print the net structure
-inline void Net::print_Net() const {
-    // print neuron structure
+inline void Net::print_Net() const { // function to print the net structure
+    
+	// print neuron structure
     for (size_t i = 0; i < SIZE; i++) { // for all the layer in a Network
         std::cout << "Layer number " << i << "\n--------------------\n";
         for (uint64_t j = 0; j < DNN[i].layer.size();j++) { // for all the neuron in a layer
@@ -140,8 +136,7 @@ inline void Net::print_Net() const {
     }
 }
 
-// I can decide if I want to save the weights or not at compile time and this
-// function allows me to save them in a file
+// Function allows me to save them in a file
 #if TEST == false
 inline Net::~Net() {
     std::ofstream saved_weights;

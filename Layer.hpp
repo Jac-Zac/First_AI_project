@@ -28,8 +28,7 @@ class Layer {
 inline void Layer::create_layer(
     size_t &index) { // index allows us to now which layer we are on
     for (uint64_t j = 0; j < topology[index]; j++) {
-        if (index < SIZE - 1) { 
-			// if I didn't do the check I would go out of bound and I can't do that
+        if (index < SIZE - 1) { // if I didn't do the check I would go out of bound and I can't do that
             Weights o_w;
             o_w.gen_output(topology[index + 1], index); // since we want the output weight we need to pass the number of neurones of the layer after
             output_weights.emplace_back(o_w);
@@ -44,10 +43,8 @@ inline void Layer::copy_layer(
 				  // saved is the array that I have filled from the Saved_Weights file, k is helpful to start at the correct index of saved
     // this is for output layers weights because I only need those, else would
     // be redundant
-    for (uint64_t j = 0; j < topology[index]; j++) {
-        // this is to fill the network
-        if (index < SIZE - 1) {  
-						 // I have to check because if I am at the last layer I can't do topology at index + 1 and it wouldn't even make sens so I have to check the It stops before
+    for (uint64_t j = 0; j < topology[index]; j++) { // this is to fill the network
+        if (index < SIZE - 1) {  // I have to check because if I am at the last layer I can't do topology at index + 1 and it wouldn't even make sens so I have to check the It stops before
             Weights o_w; // output weights
             o_w.copy_weights(topology[index + 1], saved, k);
             output_weights.emplace_back(o_w);
