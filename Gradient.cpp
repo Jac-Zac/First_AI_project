@@ -6,17 +6,11 @@
 //  Copyright © 2020 Jacopo Zacchigna. All rights reserved.
 //
 
-#pragma once
-
-#include "Net.hpp"
-#include "AI.hpp"
+#include "Gradient.hpp" 
 
 // ********************************************* DEFINITION **********************************************
 
-class Gradient : public Net {
-  public:
- //   Gradient(); // The constructor should get as parameter The Net and informations about the episode 
-  protected:
-	void Loss();
-	void BackProp();
-};
+// constructor
+ //Gradient::Gradient() {
+	 //std::cout<<"Test\n";
+ //}

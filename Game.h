@@ -18,12 +18,11 @@ class Game {
     std::array<int, N> state = {0}; // initializing with 0 which means non of those are utilized spaces yet
 };
 
-// printing board function
 inline void Game::print_board() const {
-    for (uint64_t j = 0; j < N; j = j + 3) {
-        for (uint64_t i = 0; i < 3; i++) {
-            std::cout << state[i + j] << " ";
-        }
-        std::cout << "\n";
-    }
+	for (uint64_t j = 0; j < N; j = j + 3) {
+		for (uint64_t i = 0; i < 3; i++) {
+			std::cout << state[i + j] << " ";
+		}
+		std::cout << "\n";
+	}
 }

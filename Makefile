@@ -7,8 +7,8 @@ CXX = g++
 CXXFLAGS = -c -Wall -Wextra -O2 -std=gnu++2a 
 
 # Files  Object Headers end Executable 
-OBJS=main.o 
-HDRS=*.hpp
+HDRS=*.h
+OBJS=main.o AI.o Net.o Layer.o Weights.o Gradient.o
 BIN=output
 
 ################# Unless you now what you are doing do not modify this part ################## 
@@ -18,6 +18,24 @@ all: $(BIN)
 $(BIN): $(OBJS) $(HDRS)
 	$(CXX) $(OBJS) -o $(BIN) -pthread  
 	@echo "Linked everything together"
+
+main.o: main.cpp 
+	$(CXX) $(CXXFLAGS) -c main.cpp
+
+AI.o: AI.cpp 
+	$(CXX) $(CXXFLAGS) -c AI.cpp
+
+Net.o: Net.cpp 
+	$(CXX) $(CXXFLAGS) -c Net.cpp
+
+Layer.o: Layer.cpp 
+	$(CXX) $(CXXFLAGS) -c Layer.cpp
+
+Weights.o: Weights.cpp 
+	$(CXX) $(CXXFLAGS) -c Weights.cpp
+
+Gradient.o: Gradient.cpp 
+	$(CXX) $(CXXFLAGS) -c Gradient.cpp
 
 # Clean everything but doesn't delete the Saved_Weights file 
 .PHONY: clean
