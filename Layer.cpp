@@ -1,5 +1,5 @@
 //
-//  Layer.hpp
+//  Layer.cpp
 //  First_AI_project  
 //
 //  Created by Jacopo Zacchigna on 16/05/2020.

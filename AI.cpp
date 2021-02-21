@@ -1,5 +1,5 @@
 //
-//  AI.hpp
+//  AI.cpp
 //  First_AI_project
 //
 //  Created by Jacopo Zacchigna on 03/05/2020.

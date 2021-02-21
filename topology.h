@@ -1,6 +1,6 @@
 //
 //  topology.h
-//  AI_Tria 2.0
+//  First_AI_project
 //
 //  Created by Jacopo Zacchigna on 23/10/2020.
 //  Copyright © 2020 Jacopo Zacchigna. All rights reserved.
