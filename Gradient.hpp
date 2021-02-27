@@ -9,14 +9,14 @@
 #pragma once
 
 #include "Net.hpp"
-#include "AI.hpp"
 
 // ********************************************* DEFINITION **********************************************
 
 class Gradient : public Net {
   public:
- //   Gradient(); // The constructor should get as parameter The Net and informations about the episode 
-  protected:
+	Gradient(); // The constructor should get as parameter The Net and informations about the episode 
 	void Loss();
 	void BackProp();
+  protected:
+	// activation function derivative in protected maybe
 };

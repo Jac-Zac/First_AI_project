@@ -28,11 +28,6 @@ class Net : public Layer {
 
     void Feedforward(std::array<int, N> &state);
 
-    // TO DO ******************
-    // create error function
-    // create back prop and see what you are missing
-    // ******************
-
     void print_Net() const;
 
   public:

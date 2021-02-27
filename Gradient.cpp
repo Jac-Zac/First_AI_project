@@ -11,6 +11,14 @@
 // ********************************************* DEFINITION **********************************************
 
 // constructor
- //Gradient::Gradient() {
-	 //std::cout<<"Test\n";
- //}
+Gradient::Gradient() {
+	std::cout<<"You must have called the Gradient Contructor\n";
+}
+
+void Gradient::Loss() {
+	std::cout<<"I'm the gradient Loss function\n";    
+}
+
+void Gradient::BackProp() {
+	std::cout<<"I'll be Back Propagating for life\n";
+}
