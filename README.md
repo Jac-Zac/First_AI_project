@@ -36,16 +36,15 @@ make clean_weights
 ```
 
 ### Usage for testing 
-A good easy way to use the program for now is to run the script testing with the command ``` ./testing.sh ``` The script compiles and run the program and then change the TEST variable. When using this script keep in mind that it is made for MacOS and thus it might cause unexpected behaviours on GNU/Linux do to the difference of the core utilities (such as ``` sed ``` ).   
+A good easy way to use the program for now is to run the script testing with the command  `` ./testing.sh `` The script compiles and run the program and then change the TEST variable. When using this script keep in mind that it is made for MacOS and thus it might cause unexpected behaviours on GNU/Linux do to the difference of the core utilities (such as `` sed `` ).
 
 ### Recently added features 
 I have just done a bit of cleaning up of the code and comments. I should maybe fix comments a bit more but I'm almost ready to start with the Loss function and BackProp
 
-
 ### At what point am I ? 🔖
 
 ###### This is my list of GOALS for the foreseeable future
-Refresh my konwloedge on DQN 
+> Refresh my konwloedge on DQN 
 
 **I should also add a banner perhaps that I can make in affinity photo of for this project**
 
@@ -61,4 +60,4 @@ Refresh my konwloedge on DQN
 Create a replay buffer class and the related components 
 Create a multi-threaded function to call epoch with replay buffers with perhaps a large batch size but I have pay attention to the alive variable 
 
-When you will have finished try to implement it for different tic tac toe rules like the game NOTAKTO 
+_When you will have finished try to implement it for different tic tac toe rules like the game NOTAKTO_

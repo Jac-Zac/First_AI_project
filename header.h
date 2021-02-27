@@ -1,6 +1,6 @@
 //
 //  header.h
-//  AI_Tria 2.0
+//  First_AI_project
 //
 //  Created by Jacopo Zacchigna on 02/05/2020.
 //  Copyright © 2020 Jacopo Zacchigna. All rights reserved.
@@ -22,4 +22,4 @@
 #include<math.h>
 #include<cstdlib>
 #include<sstream>
-#include"topology.hpp"
+#include"topology.h"

@@ -1,6 +1,6 @@
 //
-//  topology.hpp
-//  AI_Tria 2.0
+//  topology.h
+//  First_AI_project
 //
 //  Created by Jacopo Zacchigna on 23/10/2020.
 //  Copyright © 2020 Jacopo Zacchigna. All rights reserved.
@@ -23,8 +23,8 @@
 // topology of the network -> this can change I think I will try with
 // {N,12,15,12,N}
 
-#define SIZE 3 // SIZE -> this is the size of the topology
-constexpr std::array<const size_t, SIZE> topology = {N, 2,N}; // for now the number is arbitrary an really low for testing purposes
+#define SIZE 5 // SIZE -> this is the size of the topology
+constexpr std::array<const size_t, SIZE> topology = {N,50,100,50,N}; // for now the number is arbitrary an really low for testing purposes
 
 constexpr int64_t count(size_t i){ // this function count the number of weights for a any point
     // that we have passed (doesn't check for index out of bound)

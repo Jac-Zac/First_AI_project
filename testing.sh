@@ -13,7 +13,7 @@ echo $'Clean but do not delete the saved weights *****************************\n
 make clean
 
 # then change the value of TEST to true  
-sed -i '' "s/TEST false/TEST true/" topology.hpp 
+sed -i '' "s/TEST false/TEST true/" topology.h
 
 # then make again 
 echo $'\nMake for the second time ********************************************\n'
@@ -25,7 +25,7 @@ echo $'\nRun the executable **************************************************\n
 echo
 
 # then change TEST back to false 
-sed -i '' "s/TEST true/TEST false/" topology.hpp
+sed -i '' "s/TEST true/TEST false/" topology.h
 
 # and you can decide to clean everything
 echo $'Cleaning everything **************************************************\n'
